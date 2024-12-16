@@ -9,7 +9,7 @@ participant AMA as "We Are Access Management"
 group WellData
 User -> WellData: start
 WellData -> AMA: request POD access
-AMA <-> Idp: login [WEB-ID]
+AMA <-> IdP: login [WEB-ID]
 User <-> AMA: consent
 AMA --> WellData: [pod handle] + [WEB-ID]
 User -> WellData: select module
@@ -18,7 +18,7 @@ end
 group Module
 User -> Module: launch HTI [WEB-ID],[TASK]
 Module -> AMA: request POD access [WEB-ID]
-AMA <-> Idp: re-login [WEB-ID]
+AMA <-> IdP: re-login [WEB-ID]
 User <-> AMA: consent
 AMA --> Module: [pod handle] + [WEB-ID]
 
@@ -31,7 +31,7 @@ end
 group WellData
 User -> WellData: start
 WellData -> AMA: request POD access
-AMA <-> Idp: re-login [WEB-ID]
+AMA <-> IdP: re-login [WEB-ID]
 User <-> AMA: consent
 AMA --> WellData: [pod handle] + [WEB-ID]
 WellData -> Pod: fetch [Task]
