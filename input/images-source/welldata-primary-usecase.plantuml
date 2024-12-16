@@ -1,0 +1,40 @@
+@startuml
+participant User
+participant WellData
+participant Module as "Selfcare / BeBob"
+participant IdP
+participant Pod
+participant AMA as "We Are Access Management"
+
+group WellData
+User -> WellData: start
+WellData -> AMA: request POD access
+AMA <-> Idp: login [WEB-ID]
+User <-> AMA: consent
+AMA --> WellData: [pod handle] + [WEB-ID]
+User -> WellData: select module
+WellData -> Pod: create or update [Task]
+end
+group Module
+User -> Module: launch HTI [WEB-ID],[TASK]
+Module -> AMA: request POD access [WEB-ID]
+AMA <-> Idp: re-login [WEB-ID]
+User <-> AMA: consent
+AMA --> Module: [pod handle] + [WEB-ID]
+
+Module <-> Pod: read data
+Module -> Module: do [TASK]
+Module -> Pod: store progress data
+
+end
+
+group WellData
+User -> WellData: start
+WellData -> AMA: request POD access
+AMA <-> Idp: re-login [WEB-ID]
+User <-> AMA: consent
+AMA --> WellData: [pod handle] + [WEB-ID]
+WellData -> Pod: fetch [Task]
+WellData --> User: show task status
+end
+@enduml
