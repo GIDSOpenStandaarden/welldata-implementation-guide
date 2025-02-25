@@ -64,7 +64,20 @@ pages:
 
   overview.md:
     title: Overview
-
+  identity.md:
+    title: Identity
+  pod-access.md:
+    title: Pod Access
+  logging.md:
+    title: Audit Logging
+  research-data.md:
+    title: Research Data
+  launch.md:
+    title: Launch & SSO
+  static-data.md:
+    title: Static Data (questionnaires)
+  shared-data.md:
+    title: Shared Dynamic Data
 
 
 #
@@ -93,6 +106,16 @@ pages:
 menu:
   Home: index.html
   Overview: overview.html
+  Open Standards:
+    Identity: identity.html
+    Pod Access: pod-access.html
+    Launch: launch.html
+    Audit logging: logging.html
+    Research Data: research-data.html
+  Data models:
+    Static Data: static-data.html
+    Dynamic Data: dynamic-data.html
+
 
 
 
