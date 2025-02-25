@@ -1,40 +1,77 @@
 @startuml
-participant User
-participant WellData
-participant Module as "Selfcare / BeBob"
-participant IdP
-participant Pod
-participant AMA as "We Are Access Management"
+title Welldata Sequence Diagram
 
-group WellData
-User -> WellData: start
-WellData -> AMA: request POD access
-AMA <-> IdP: login [WEB-ID]
-User <-> AMA: consent
-AMA --> WellData: [pod handle] + [WEB-ID]
-User -> WellData: select module
-WellData -> Pod: create or update [Task]
-end
-group Module
-User -> Module: launch HTI [WEB-ID],[TASK]
-Module -> AMA: request POD access [WEB-ID]
-AMA <-> IdP: re-login [WEB-ID]
-User <-> AMA: consent
-AMA --> Module: [pod handle] + [WEB-ID]
+actor "User" as user
+participant "Well data portal" as portal
+participant "Athumi approved Idp" as idp
+participant "Selfcare" as selfcare
+participant "Bibopp" as bibopp
+participant "Zipster" as zipster
+participant "User POD" as pod
+participant "We Are IDP" as weareidp
+participant "Athumi VC Service" as avcs
+participant "We Are AMA" as weareama
 
-Module <-> Pod: read data
-Module -> Module: do [TASK]
-Module -> Pod: store progress data
 
+group login
+  user -> portal: access
+  portal -> user: redirect to login
+  user <--> idp: Solid OIDC login
+  user --> portal: access token with WebId
 end
 
-group WellData
-User -> WellData: start
-WellData -> AMA: request POD access
-AMA <-> IdP: re-login [WEB-ID]
-User <-> AMA: consent
-AMA --> WellData: [pod handle] + [WEB-ID]
-WellData -> Pod: fetch [Task]
-WellData --> User: show task status
+group launch
+  user -> portal: select Selfcare
+  portal -> user: 302, Location: Selfcare
+  user -> selfcare: redrect (HTI launch) pass webId of user
+  note over selfcare: what is HTI launch?
+  selfcare -> selfcare: validate launch
+
+  selfcare -> weareidp: authenticate application with client, secret
+  weareidp -> selfcare: authenticated token for client with webid
+  selfcare -> avcs: trigger access request to access pod on weare/ container
+  selfcare -> user: 302, Location: We Are AMA
+  user -> weareama: vizualize access request
+  weareama <-> idp: authenticate user
+  user -> weareama: approve access request
+  weareama -> avcs: create access grant
+  avcs --> selfcare: access grant created
+  weareama -> user: 302, Location: selfcare
+end
+
+
+
+group questionnaire
+  note over selfcare: why request FHIR questionnaire to zipster?
+  user -> selfcare: select questionnaire
+  selfcare -> zipster: request FHIR questionnaire
+  zipster --> selfcare: FHIR questionnaire
+  selfcare -> user: render
+
+  note over selfcare: we could load existing FHIR data from the pod. How to know which resource we need? Can this be done based on snomed identifiers?
+  selfcare -> avcs: get access grants for logged in user's webid
+  avcs -> selfcare: access grants for user's webid
+  selfcare -> pod: get FHIR resource with access grant
+  pod -> selfcare: return FHIR resource
+
+  loop fill in
+    user --> selfcare: fill in answer
+    selfcare -> pod: create or update FHIR questionnaire response in weare/questionnaireresponse/<uuid>
+    pod --> selfcare: 201 OK
+    selfcare --> user: render next question
+  end
+end
+
+
+
+
+
+group analysis
+  selfcare -> zipster: send FHIR questionnaire responses
+  zipster -> zipster: calculation based on FHIR questionnaire responses
+  zipster --> selfcare: FHIR health care services with codable concepts
+  selfcare -> pod: store codable concepts
+  pod --> selfcare: 201 OK
+  selfcare --> user: show advised care services
 end
 @enduml
