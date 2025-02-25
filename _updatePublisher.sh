@@ -1,5 +1,5 @@
 #!/bin/bash
-pubsource=https://github.com/HL7/fhir-ig-publisher/releases/latest/download/
+pubsource=https://github.com/HL7/fhir-ig-publisher/releases/download/1.8.14/
 publisher_jar=publisher.jar
 dlurl=$pubsource$publisher_jar
 
@@ -122,6 +122,7 @@ if [[ $skipPrompts == true ]] || [[ $response =~ ^[yY].*$ ]]; then
 
   curl -L $gen_sh_url -o /tmp/_genonce.new
   sed s/tx.fhir.org/captive.apple.com/g /tmp/_genonce.new > _genonce.sh
+  sed -i s/txoption=""/txoption="-tx n\/a"/g _genonce.sh
   chmod +x _genonce.sh
   rm  /tmp/_genonce.new
 
