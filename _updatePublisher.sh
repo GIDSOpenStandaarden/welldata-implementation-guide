@@ -122,7 +122,7 @@ if [[ $skipPrompts == true ]] || [[ $response =~ ^[yY].*$ ]]; then
 
   curl -L $gen_sh_url -o /tmp/_genonce.new
   sed s/tx.fhir.org/captive.apple.com/g /tmp/_genonce.new > _genonce.sh
-  sed -i s/txoption=""/txoption="-tx https://tx.services.gidsopenstandaarden.org"/g _genonce.sh
+#  sed -i s/txoption=""/txoption="-tx https://tx.services.gidsopenstandaarden.org"/g _genonce.sh
   chmod +x _genonce.sh
   rm  /tmp/_genonce.new
 
