@@ -40,9 +40,6 @@
         <mxCell id="cpSgUG0TKF3vMzKKmCbn-12" value="Identity Provider" style="icon;html=1;image=img/clipart/Gear_128x128.png" vertex="1" parent="1">
           <mxGeometry x="180" y="190" width="60" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="cpSgUG0TKF3vMzKKmCbn-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.517;entryY=-0.009;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="cpSgUG0TKF3vMzKKmCbn-12" target="cpSgUG0TKF3vMzKKmCbn-6">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
         <mxCell id="cpSgUG0TKF3vMzKKmCbn-19" value="Bebopp" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.window;" vertex="1" parent="1">
           <mxGeometry x="500" y="450" width="60" height="55" as="geometry" />
         </mxCell>
