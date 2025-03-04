@@ -3,7 +3,7 @@
 # │  used properties are included. For a list of all supported properties and their functions,     │
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
-id: fhir.scp
+id: fhir.gidsopenstandaarden.welldata
 canonical: https://gidsopenstandaarden.github.io/welldata-implementation-guide
 url: https://gidsopenstandaarden.github.io/welldata-implementation-guide
 name: welldata-implementation-guide
