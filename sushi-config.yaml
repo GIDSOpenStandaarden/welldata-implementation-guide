@@ -64,6 +64,8 @@ pages:
 
   overview.md:
     title: Overview
+  primary-use-case.md:
+    title: Primary Use Case
   identity.md:
     title: Identity
   pod-access.md:
@@ -76,8 +78,10 @@ pages:
     title: Launch & SSO
   static-data.md:
     title: Static Data (questionnaires)
-  shared-data.md:
+  dynamic-data.md:
     title: Shared Dynamic Data
+  technical-pod-access.md:
+    title: Accessing the Pod
 
 
 #
@@ -105,8 +109,10 @@ pages:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
-  Overview: overview.html
-  Open Standards:
+  Overview:
+    Overview: overview.html
+    Primary Use Case: primary-use-case.html
+  Standards and Specification:
     Identity: identity.html
     Pod Access: pod-access.html
     Launch: launch.html
@@ -115,6 +121,8 @@ menu:
   Data models:
     Static Data: static-data.html
     Dynamic Data: dynamic-data.html
+  Technical Walkthrough:
+    Accessing the Pod: technical-pod-access.html
 
 
 

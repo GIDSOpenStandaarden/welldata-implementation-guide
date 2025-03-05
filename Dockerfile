@@ -3,11 +3,16 @@ LABEL maintainer="roland@headease.nl"
 
 # Install native compilation dependencies.
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y gcc g++ make apt-utils
+RUN apt-get install -y gcc g++ make apt-utils wget \
+    libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils \
+    libatspi2.0-0 libsecret-1-0
 
 # Install Node from NodeSource.
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get install -y nodejs
+
+RUN wget  -nv https://github.com/jgraph/drawio-desktop/releases/download/v26.0.16/drawio-arm64-26.0.16.deb
+RUN dpkg -i drawio-arm64-26.0.16.deb
 
 # Install Jekyll for Ubuntu/Debian: https://jekyllrb.com/docs/installation/ubuntu/
 RUN apt-get install -y ruby-full build-essential zlib1g-dev
