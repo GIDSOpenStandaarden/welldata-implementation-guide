@@ -11,3 +11,6 @@
       * /credential?code=x > acces_grant (VC)
     * POD:
       * GET, PUT, POST Authorization: acces_grant
+
+### TODO:
+ * Link to SOLID / ACM / WeAre documentation
