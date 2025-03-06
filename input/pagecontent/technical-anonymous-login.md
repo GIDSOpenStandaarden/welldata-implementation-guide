@@ -1,5 +1,3 @@
-# GIDS Anonymous Login
-
 ## Interaction overview
 
 The OAuth 2.0 Authorization Framework is documented in https://datatracker.ietf.org/doc/html/rfc6749, the MS Auth

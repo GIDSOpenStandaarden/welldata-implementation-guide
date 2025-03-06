@@ -1,6 +1,5 @@
-### OIDC/SOLID-OIDC
-TODO: Describe
-### GIDS Anonymous Login
+## The anonymous login functionality
+### Goals and assumption
 A pilot has been defined by Verslavingskunde Nederland (VKN) that wants to prove the integration of e-health modules with Health Tools Interoperability (HTI) and the use of Self Sovereign Identities (SSI) with a an Anonymous ID published by GIDS Open Standaarden. The case of HTI will not be discussed in this document. This document describes the application of Anonymous ID published by GIDS Open Standaarden, which allows anonymous logins. Whereas most self sovereign attributes are related to things like driver's licenses and social security numbers. Contemporary e-Health applications make use of relatable identifiers such as email or social security number. Public available self-help platforms have a) no need to identify the user with a relatable identifier, b) users highly prefer anonymity when participating in publicly available platforms, c) anonymous use of the software platforms makes the platform less vulnerable to leaking sensitive user data.  This project makes use of an assigned identifier that is unrelated to the user, other than that the possession of the identifier can be used to identify a recurring user as the same as before.
 
 <img src="anon-login-comp.png" alt="Anonymous login" style="width: 50%; float: none;"/>
