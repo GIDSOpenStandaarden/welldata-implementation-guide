@@ -90,7 +90,6 @@ The application should verify if the value of state matches the corresponding va
 
 ```http request
 POST http://ms-auth.sns.gidsopenstandaarden.org/oidc/token HTTP/1.1
-..
 ```
 
 The request has the following application/x-www-form-urlencoded attributes as body:
