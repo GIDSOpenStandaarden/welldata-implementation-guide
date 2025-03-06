@@ -1,7 +1,7 @@
 ## Structure of the WellData specification
 The main structure of the welldata specification is displayed below:
 
-<img src="images/Welldata%20Overview.png" alt="Welldata Overview" style="width: 35%; float: none;">
+<img src="welldata-overview.png" alt="Welldata Overview" style="width: 35%; float: none;">
 
 ## Topics of this specification
 * Identity and Identity Provisioning
