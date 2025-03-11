@@ -25,7 +25,7 @@ provide the application developer with a client_id and client_secret.
 The first step is optional.
 This requests looks like the following:
 
-```http request
+```http
 GET https://ms-auth.sns.gidsopenstandaarden.org/.well-known/openid-configuration HTTP/1.1
 ```
 
@@ -63,7 +63,7 @@ The response contains the URLs and other settings that are used in the later ste
 
 To start the authorization, the user must be redirected to the following location.
 
-```http request
+```http
 GET http://ms-auth.sns.gidsopenstandaarden.org/oidc/authorize?response_type=code&client_id=x&redirect_uri=y&state=x&
   scope=openid HTTP/1.1
 ```
@@ -80,7 +80,7 @@ The attributes are the following:
 
 ### Step 2. the user redirects back to the redirect_uri location
 
-```http request
+```http
 GET <redirect_uri>?code=x&state=y HTTP/1.1
 ```
 
@@ -88,7 +88,7 @@ The application should verify if the value of state matches the corresponding va
 
 ### Step 3, request the access token and id token
 
-```http request
+```http
 POST http://ms-auth.sns.gidsopenstandaarden.org/oidc/token HTTP/1.1
 ```
 
