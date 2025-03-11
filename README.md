@@ -5,7 +5,7 @@ Building this guide requires the following tools:
 
 ## Building the guide on the local machine
 ```shell
-docker build . -t welldata && docker run --name=welldata --rm -v ./input:/app/input -v ./output:/app/output  welldata
+docker build . -t gidsopenstandaarden-welldata-ig && docker run -v ./input:/app/input -v ./output:/app/output -v ./tmp:/tmp/ -v ./root:/root  -it gidsopenstandaarden-welldata-ig
 ```
 
 The result can be viewed in the `./output` folder.
