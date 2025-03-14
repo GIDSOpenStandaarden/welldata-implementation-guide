@@ -1,5 +1,3 @@
-### Solid OIDC Flow
-
 The OIDC/SOLID-OIDC specification defines how owners of the pods need to authenticate towards an IDP and how resource servers can verify the identity of pod owners based on that authentication.
 The SOLID-OIDC flow is described in detail [here](https://solidproject.org/TR/oidc-primer#solid-oidc-flow)
 
@@ -7,11 +5,11 @@ For the Welldata implementation we filled in the correct endpoints for our ACC e
 
 {% include solid-oidc.svg %}
 
-#### User initiates login
+### User initiates login
 
 The Solid OIDC flow is initiated by the user, triggering a login action on the Welldata Frontend application
 
-#### Calling backend
+### Calling backend
 
 In the call from the frontend to the backend the redirect url should be passed to which the user should return after the Solid OIDC flow is completed:
 
@@ -19,7 +17,7 @@ In the call from the frontend to the backend the redirect url should be passed t
 https://<backend>/login?redirectUrl=<front end redirecturl>
 ```
 
-#### Redirect to IDP
+### Redirect to IDP
 
 The backend initiates a redirect of the user to the IDP which can authenticate the user:
 
@@ -44,11 +42,11 @@ The folowing parameters are passed in the call
 consent forces the user to explicitly approve the request.
 
 
-#### User prompt for credentials and authenticates
+### User prompt for credentials and authenticates
 
 In the next 2 steps the user is prompted to authenticate himself using credentials.
 
-#### Authorization code is exchanged with the backend
+### Authorization code is exchanged with the backend
 
 After authentication the user is redirected with a call to the Welldata backend. 
 ```
@@ -59,7 +57,7 @@ With this call 2 parameters are passed:
 - code: this parameter needs to be exchanged by the backend for a real access token and id token.
 - state
 
-#### Exchange authorization code for tokens
+### Exchange authorization code for tokens
 
 Next call is a post to the IDP broker to exchange the authorization code for the right tokens
 
@@ -75,7 +73,7 @@ The following parameters in the body are required for this call:
 - code_verifier
 
 
-#### Return token and user is authenticated
+### Return token and user is authenticated
 
 The IDP broker will now return the access token and id token of the user and the user is logged in.
 
