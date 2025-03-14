@@ -1,0 +1,22 @@
+@startuml
+title Welldata Pod interaction
+actor "User" as user
+participant "Welldata FE" as welldataFE
+participant "Welldata BE" as welldataBE
+participant "ACM/IDM" as acm
+  
+  
+group Solid OIDC Flow
+  user->welldataFE: login
+ 
+  welldataFE->welldataBE: https://<backend>/login
+  welldataBE->acm: https://authenticatie-ti.vlaanderen.be/op/v1/auth
+  acm->user:prompt authentication
+  user->acm: provide credentials
+  acm->welldataBE: https://<backend>/oidc-redirect?code=<>&state=<>
+  welldataBE->acm: POST https://authenticatie-ti.vlaanderen.be/op/v1/token
+  acm->welldataBE: access token and id token incl. webId
+  welldataBE->welldataFE: user logged in and redirect back to original redirect url
+   
+end
+@enduml

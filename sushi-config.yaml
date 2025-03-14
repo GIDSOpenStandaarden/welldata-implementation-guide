@@ -69,6 +69,8 @@ pages:
     title: Identity and Idp
   identity-anonymous-login.md:
     title: Anonymous Login
+  solid-oidc.md:
+    title: Solid OIDC flow
   pod-access.md:
     title: Pod Access
   logging.md:
