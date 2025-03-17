@@ -3,7 +3,9 @@ The SOLID-OIDC flow is described in detail [here](https://solidproject.org/TR/oi
 
 For the Welldata implementation we filled in the correct endpoints for our ACC environment.
 
+{::nomarkdown}
 {% include solid-oidc.svg %}
+{:/}
 
 ### User initiates login
 
@@ -13,7 +15,7 @@ The Solid OIDC flow is initiated by the user, triggering a login action on the W
 
 In the call from the frontend to the backend the redirect url should be passed to which the user should return after the Solid OIDC flow is completed:
 
-``` 
+```
 https://<backend>/login?redirectUrl=<front end redirecturl>
 ```
 
@@ -48,7 +50,7 @@ In the next 2 steps the user is prompted to authenticate himself using credentia
 
 ### Authorization code is exchanged with the backend
 
-After authentication the user is redirected with a call to the Welldata backend. 
+After authentication the user is redirected with a call to the Welldata backend.
 ```
 https://<backend>/oidc-redirect?code=<>&state=<>
 ```

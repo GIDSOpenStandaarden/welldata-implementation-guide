@@ -1,6 +1,8 @@
 ### Primary use case overview
 
+{::nomarkdown}
 {% include welldata-primary-usecase.svg %}
+{:/}
 
 The following sequence diagram describes user interactions and backend processes in the **Well Data Portal** ecosystem. It involves user authentication, application launches, questionnaire handling, and analysis, with interactions between multiple participants and services.
 
