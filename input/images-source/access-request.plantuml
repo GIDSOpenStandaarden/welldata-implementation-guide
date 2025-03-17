@@ -1,0 +1,21 @@
+@startuml
+title Access Request Flow
+actor "User" as user
+participant "Welldata FE" as welldataFE
+participant "Welldata BE" as welldataBE
+participant "VC Service" as vcservice
+participant "We Are AMA" as weareama
+
+group Access Request Flow
+  welldataBE->vcservice: https://vc.sandbox-pod.datanutsbedrijf.be/issue Authorization: Bearer <BE access token>, Body AR VC
+  vcservice->welldataBE: access request
+  welldataBE->welldataFE: redirect user to We Are AMA
+  welldataFE->user: redirect to We Are AMA
+  user->weareama: accept access request
+  weareama->welldataFE: access grant
+  welldataFE->welldataBE: access grant
+end
+ 
+
+@enduml
+  
