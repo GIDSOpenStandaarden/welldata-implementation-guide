@@ -7,12 +7,11 @@ participant "User Pod" as pod
 participant "UMA Service" as umaservice
 
 group Write to pod
- welldataBE->pod: get resource: https://<pod>/welldata/<resource>
- pod->welldataBE: UMA_as_uri=<>, ticket=<>
+ welldataBE->pod: GET https://<pod>/welldata/<resource>
+ pod-->welldataBE: UMA_as_uri=<>, ticket=<>
  welldataBE->umaservice: POST https://uma.pod.datanutsbedrijf.be/token
- umaservice->welldataBE: access token
+ umaservice-->welldataBE: access token
  welldataBE->pod: POST https://<pod>/welldata/<resource>
 end
 
 @enduml
-  
