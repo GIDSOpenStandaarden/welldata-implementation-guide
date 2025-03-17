@@ -9,7 +9,7 @@ participant "UMA Service" as umaservice
 group Write to pod
  welldataBE->pod: get resource: https://<pod>/welldata/<resource>
  pod->welldataBE: UMA_as_uri=<>, ticket=<>
- welldataBE->umaservice: POST https://uma.pod.datanutsbedrijf.be/token grant_type=urn:ietf:params:oauth:grant-type:uma-ticket&ticket=<>&claim_token=<Base64 encoded Access Grant>&claim_token_format=https://www.w3.org/TR/vc-data-model/#json-ld
+ welldataBE->umaservice: POST https://uma.pod.datanutsbedrijf.be/token
  umaservice->welldataBE: access token
  welldataBE->pod: POST https://<pod>/welldata/<resource>
 end

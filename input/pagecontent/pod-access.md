@@ -78,6 +78,12 @@ First a call needs to be made to the resource endpoint. It will return two heade
 - UMA as_uri: uri of the UMA endpoint
 - ticket: the ticket number to be used in the UMA call to exchange the access grant for an access token.
 
+Then the UMA endpoint is called with the following parameters:
+- grant_type = `urn:ietf:params:oauth:grant-type:uma-ticket`
+- ticket = the ticket received by calling the resource endpoint
+- claim_token= This is the Base64 encoded Access Grant
+- claim_token_format=`https://www.w3.org/TR/vc-data-model/#json-ld`
+
 The flow is described below in the diagram:
 
 {% include pod-access.svg %}
