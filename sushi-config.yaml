@@ -87,6 +87,10 @@ pages:
     title: Accessing the Pod
   technical-anonymous-login.md:
     title: Anonymous Login
+  technical-hti-launch-compose.md:
+    title: HTI - Composing a launch
+  technical-hti-launch-receive.md:
+    title: HTI - Receiving a launch
 
 
 #
@@ -130,6 +134,8 @@ menu:
   Technical Walkthrough:
     Accessing the Pod: technical-pod-access.html
     Anonymous Login: technical-anonymous-login.html
+    HTI, composing a launch: technical-hti-launch-compose.html
+    HTI, receiving a launch: technical-hti-launch-receive.html
 
 
 

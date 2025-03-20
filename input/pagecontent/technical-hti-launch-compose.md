@@ -1,6 +1,4 @@
-### Compose a launch
-
-#### 0. Pre-requisites
+### 0. Pre-requisites
 
 The launching party should have a public-private keypair, with the public key available by openid-configuration method:
 
@@ -10,9 +8,11 @@ The launching party should have a public-private keypair, with the public key av
   * The <base-url>/.well-known/openid-configuration` should have at least:
     * The `issuer` value matching the <base-url>
     * The `jwks_uri` matching the JWKS endpoint.
-  * The JWKS endpoint having the public key as JWK available.
+  * The JWKS endpoint having the public key as JWK available by
+    the [JSON Web Key (JWK) specification](https://datatracker.ietf.org/doc/html/rfc7517).
+    * Note that the `kid` value of the key will need to match the `kid` header of the signed JWT.
 
-##### Generating a keypair:
+#### Generating a keypair:
 
 ```shell
 ssh-keygen -t rsa -m PKCS8 -b 2048 -f private.key
@@ -27,7 +27,7 @@ printf "\n"
 
 To perform the launch, the following steps must be performed:
 
-#### 1. Create HTI context claims
+### 1. Create HTI context claims
 
 The HTI:core v2.0 profile describes the following claims:
 
@@ -48,7 +48,7 @@ An example of the resulting HTI claims
 }
 ```
 
-#### 2. Create the JWT
+### 2. Create the JWT
 
 The HTI:core v2.0 profile also contains claims that are always set on a JWT:
 
@@ -75,40 +75,18 @@ These two sets of claims should be combined to form a valid HTI v2.0 JWT. For ex
 }
 ```
 
-The timestamps follows the [UNIX time](https://en.wikipedia.org/wiki/Unix_time) convention, being the number of seconds
-since the epoch.
+The timestamps follow the [UNIX time](https://en.wikipedia.org/wiki/Unix_time) convention, being the number of seconds since the epoch.
 
-#### 3. Sign the JWT
+### 3. Sign the JWT
 
 The JWT should be signed in the [JWS compact serialization](https://datatracker.ietf.org/doc/html/rfc7515#section-3.1).
 
-#### 3. Initiating a launch
+Please note that the JWT header value for `kid` **MUST** be set and match the value of the `kid` value of the matching public key (JWK) published at the `jwks_uri` endpoint.
 
-The launch can be initiated via a <form> and the form-post-redirect flow.
+### 4. Initiating a launch
 
-##### Headers
+The launch can be initiated via a `<form>` and the form-post-redirect flow.
+
+#### Headers
 
 | Name         | Type   | Description                         |
-|--------------|--------|-------------------------------------|
-| Content-Type | String | `application/x-www-form-urlencoded` |
-
-##### Request Body
-
-| Name   | Type   | Description    |
-|--------|--------|----------------|
-| launch | String | The signed JWT |
-
-##### Example:
-
-```html
-
-<html>
-<head>
-</head>
-<body onload="document.forms[0].submit();">
-<form action="https://module.provider.eu/modules/x" method="post">
-  <input type="hidden" name="launch" value="eyJhbGciO..."/>
-</form>
-</body>
-</html>
-```
