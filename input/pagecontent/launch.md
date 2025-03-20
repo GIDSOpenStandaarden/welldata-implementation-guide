@@ -1,10 +1,3 @@
-### Launch mechanismen
-* HTI  / Koppeltaal / SMART on FHIR
-  * Is een id_token porteerbaar?
-  * Id_token_hint bij het 2e keer inloggen
-* Idp / SSO
-  *  Zie Pod Access.
-
 ### GIDS Health Tools Interoperability
 The **HTI 2.0** (Health Tools Interoperability) specification is part of the GIDS open standaarden, which defines standards for secure and efficient application interoperability within healthcare systems. The main focus of HTI 2.0 is to facilitate **secure and seamless context launches** between healthcare applications. Here is a summary of its key aspects:
 
