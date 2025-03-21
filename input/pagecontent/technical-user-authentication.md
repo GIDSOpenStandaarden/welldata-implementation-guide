@@ -80,3 +80,15 @@ The following parameters in the body are required for this call:
 The IDP broker will now return the access token and id token of the user and the user is logged in.
 
 
+### Example implementation in We Are Demo Application
+
+The We Are consortium developed a demo application showcasing all the different steps necessary to read, write and share resources in a pod. 
+
+Starting an authentication flow from the frontend application is explained in the Authentication part of the front end demo application, which can be found [here](https://github.com/VITObelgium/We-Are-Demo-Front-End). 
+
+This angular front end app will then redirect the user to `login`endpoint of the [We Are Backend application](https://github.com/VITObelgium/We-Are-Demo-Back-End). In order to successfully start the login flow, the right environment variables need to be set on the backend application:
+
+```
+CITIZEN_OIDC_CLIENT_ID
+CITIZEN_OIDC_CLIENT_SECRET
+```

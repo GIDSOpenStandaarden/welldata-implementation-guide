@@ -7,7 +7,7 @@ participant "VC Service" as vcservice
 participant "We Are AMA" as weareama
 
 group Access Request Flow
-  welldataBE->vcservice: https://vc.sandbox-pod.datanutsbedrijf.be/issue Authorization: Bearer <BE access token>, Body AR VC
+  welldataBE->vcservice: https://vc.sandbox-pod.datanutsbedrijf.be/issue 
   vcservice->welldataBE: access request
   welldataBE->welldataFE: redirect user to We Are AMA
   welldataFE->user: redirect to We Are AMA

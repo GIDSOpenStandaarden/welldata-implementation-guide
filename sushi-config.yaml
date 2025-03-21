@@ -69,8 +69,6 @@ pages:
     title: Identity and Idp
   identity-anonymous-login.md:
     title: Anonymous Login
-  solid-oidc.md:
-    title: Solid OIDC flow
   pod-access.md:
     title: Pod Access
   logging.md:
@@ -91,7 +89,10 @@ pages:
     title: HTI - Composing a launch
   technical-hti-launch-receive.md:
     title: HTI - Receiving a launch
-
+  technical-user-authentication.md:
+    title: User Authentication
+  technical-client-authentication.md:
+    title: Client Authentication
 
 #
 #
@@ -132,6 +133,8 @@ menu:
     Static Data: static-data.html
     Dynamic Data: dynamic-data.html
   Technical Walkthrough:
+    Authenticating the user: technical-user-authentication.html
+    Authenticating the application: technical-client-authentication.html
     Accessing the Pod: technical-pod-access.html
     Anonymous Login: technical-anonymous-login.html
     HTI, composing a launch: technical-hti-launch-compose.html
