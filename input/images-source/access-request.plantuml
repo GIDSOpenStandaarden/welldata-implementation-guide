@@ -9,8 +9,8 @@ participant "We Are AMA" as weareama
 group Access Request Flow
   welldataBE->vcservice: https://vc.sandbox-pod.datanutsbedrijf.be/issue 
   vcservice->welldataBE: access request
-  welldataBE->welldataFE: redirect user to We Are AMA
-  welldataFE->user: redirect to We Are AMA
+  welldataBE->weareama: redirect user to We Are AMA
+  weareama->user: prompt for access request approval
   user->weareama: accept access request
   weareama->welldataFE: access grant
   welldataFE->welldataBE: access grant
