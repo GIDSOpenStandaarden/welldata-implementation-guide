@@ -1,5 +1,5 @@
 @startuml
-title Welldata Pod interaction
+title Solid OIDC Flow
 actor "User" as user
 participant "Welldata FE" as welldataFE
 participant "Welldata BE" as welldataBE
