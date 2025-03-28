@@ -4,22 +4,26 @@
 
 ### 🔑 1. **Genereer Keypair**
 - Genereer een **asymmetrisch keypair** (RSA of EC), bijvoorbeeld via:
-  ```bash
+-
+```bash
   openssl genpkey -algorithm RSA -out private.pem -pkeyopt rsa_keygen_bits:2048
   openssl rsa -pubout -in private.pem -out public.pem
-  ```
+```
+
 - Dit keypair wordt gebruikt om **JWTs te ondertekenen** bij het starten van de launch.
 
 ---
 
 ### 🌐 2. **Publiceer OpenID Config + JWKS**
 - Maak een `.well-known/openid-configuration` endpoint aan op je platform base URL (bijv. `https://myplatform.example/.well-known/openid-configuration`) met:
-  ```json
+
+```json
   {
     "issuer": "https://myplatform.example",
     "jwks_uri": "https://myplatform.example/.well-known/jwks.json"
   }
-  ```
+```
+
 - Zorg dat `jwks_uri` een geldig JWKS bevat met je publieke sleutel:
   - Gebruik bijv. [mkjwk.org](https://mkjwk.org/) of een tool als `jose` om dit JSON formaat te genereren.
 
@@ -43,6 +47,7 @@ Stel een JWT samen met minimaal deze claims:
 
 ### 📤 4. **Redirect de gebruiker via een HTML form**
 - Maak een auto-submitting HTML form met de JWT als POST parameter:
+
 ```html
 <form method="post" action="https://target-module.example/launch" id="htiLaunch">
   <input type="hidden" name="launch_token" value="eyJhbGciOi...">
