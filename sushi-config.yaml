@@ -93,6 +93,8 @@ pages:
     title: User Authentication
   technical-client-authentication.md:
     title: Client Authentication
+  hackathon-hti-launch.md:
+    title: HTI Launch
 
 #
 #
@@ -139,7 +141,8 @@ menu:
     Anonymous Login: technical-anonymous-login.html
     HTI, composing a launch: technical-hti-launch-compose.html
     HTI, receiving a launch: technical-hti-launch-receive.html
-
+  Hackathon:
+    HTI Launch: hackathon-hti-launch.html
 
 
 
