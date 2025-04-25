@@ -3,19 +3,29 @@
 The WellData project facilitates the secure and ethical exchange of well-being data for research purposes through a delegated consent model. This approach balances the needs of research with strong user privacy protections and consent management.
 
 ```
-    Trusts       ┌─────────────┐        Qualifies
-      ┌──────────►Trusted Party│─────────────┐
-      │          └─────────────┘             │
-      │                                      │
-      │                                      │
-  ┌──────┐                              ┌────▼─────┐
-  │ User │─────► Consent + Data ◄───────│Researcher│
-  └──────┘               │              └──────────┘
-      │                  │
-      │                  │
-┌─────────────┐     ┌──────────┐
-│ Application │     │Data Store│
-└─────────────┘     └──────────┘
+                          │
+                          │
+                          │
+                          │
+
+     Trusts       ┌─────────────┐        Qualifies
+       ┌──────────►Trusted Party│─────────────┐
+       │          └─────────────┘             │
+       │                                      │
+       │                                      │
+   ┌──────┐                              ┌────▼─────┐
+   │ User │─────► Consent + Data ◄───────│Researcher│
+   └──────┘               │              └──────────┘
+       │                  │
+       │                  │
+ ┌─────────────┐     ┌──────────┐
+ │ Application │     │Data Store│
+ └─────────────┘     └──────────┘
+
+                          │
+Private space             │          Anonymous data
+                          │
+                          │
 ```
 
 
