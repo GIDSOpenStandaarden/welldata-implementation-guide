@@ -27,8 +27,6 @@ Private space             │          Anonymous data
                           │
                           │
 ```
-
-
 ### Key Principles
 
 * **Delegated Consent**: Users delegate authorization decisions to a Trusted Third Party (TTP) rather than directly to individual researchers
@@ -61,8 +59,8 @@ Private space             │          Anonymous data
 #### 3. Access Permission Management
 * Qualified researchers request data access from the TTP
 * TTP evaluates whether the request matches user consent preferences
-* Upon approval, TTP issues permissions with appropriate limitations
-* Permissions are encoded in access tokens or credentials
+* Upon approval, TTP issues permissions as Verifiable Credentials
+* Researchers present these credentials as Verifiable Presentations when accessing data
 
 #### 4. Data Query and Response
 * Researchers query the data station with their permissions
