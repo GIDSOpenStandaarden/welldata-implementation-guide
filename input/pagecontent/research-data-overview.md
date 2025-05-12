@@ -90,40 +90,33 @@ The WellData project leverages the [NUTS network](https://nuts.nl/manifest/) as 
 
 #### Trust Flow Implementation
 
-1. **User to TTP Trust**: Users issue Verifiable Credentials (VCs) to the TTP authorizing them to manage research data access
+1. **User to TTP Trust**: Users provide consent that is stored with their data in a predefined format, authorizing the TTP to manage research data access
 2. **TTP to Researcher Trust**: TTPs issue VCs to qualified researchers defining their access rights
 3. **Data Station to TTP Trust**: Data stations verify the trust chain from researchers through the TTP to user consent
-4. **Revocation Management**: All VCs can be revoked through the NUTS network revocation registry
+4. **Revocation Management**: Consent can be revoked through the originating application, while VCs can be revoked through the NUTS network revocation registry
 
 Each participant in the ecosystem maintains a digital wallet that stores their VCs and manages trust relationships according to the NUTS protocols.
 
 ### Technical Implementation
 
 #### Consent Storage Format
-Consent is stored as a verifiable credential with the following key components:
+Consent is stored together with the data in a predefined JSON format with the following key components:
 
 ```
 {
-  "@context": [
-    "https://www.w3.org/2018/credentials/v1",
-    "https://nuts.nl/credentials/v1",
-    "https://welldata.org/credentials/v1"
-  ],
-  "type": ["VerifiableCredential", "ResearchConsent"],
-  "issuer": "<User-DID>",
-  "issuanceDate": "<ISO-8601-timestamp>",
+  "consentId": "<unique-consent-id>",
+  "dataSubject": "<User-DID>",
+  "trustedParty": "<TTP-DID>",
+  "creationDate": "<ISO-8601-timestamp>",
   "expirationDate": "<ISO-8601-timestamp>",
-  "credentialSubject": {
-    "id": "<TTP-DID>",
-    "consentPreferences": {
-      "purposeRestrictions": ["medical_research", "public_health", ...],
-      "dataTypes": ["questionnaire_responses", "activity_data", ...],
-      "minimumAnonymizationLevel": "k-anonymity-5",
-      "additionalConditions": [...]
-    },
-    "dataLocation": "<data-reference-or-container>",
-    "nutsRegistryEntry": "<registry-identifier>"
-  }
+  "consentPreferences": {
+    "purposeRestrictions": ["medical_research", "public_health", ...],
+    "dataTypes": ["questionnaire_responses", "activity_data", ...],
+    "minimumAnonymizationLevel": "k-anonymity-5",
+    "additionalConditions": [...]
+  },
+  "dataLocation": "<data-reference-or-container>",
+  "revocationStatus": "active"
 }
 ```
 
