@@ -1,0 +1,8 @@
+# SUSHI / FHIR IG build directories
+output/
+temp/
+tmp/
+fsh-generated/
+input-cache/
+root/
+template/

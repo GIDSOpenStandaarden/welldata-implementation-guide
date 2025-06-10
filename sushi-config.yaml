@@ -137,6 +137,12 @@ menu:
   Data models:
     Static Data: static-data.html
     Dynamic Data: dynamic-data.html
+  FHIR Artifacts:
+    Profiles: artifacts.html#2
+    Extensions: artifacts.html#3
+    Value Sets: artifacts.html#4
+    Code Systems: artifacts.html#5
+    Examples: artifacts.html#6
   Technical Walkthrough:
     Authenticating the user: technical-user-authentication.html
     Authenticating the application: technical-client-authentication.html
