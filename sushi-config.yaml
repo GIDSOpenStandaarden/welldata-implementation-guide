@@ -85,6 +85,8 @@ pages:
     title: Accessing the Pod
   technical-anonymous-login.md:
     title: Anonymous Login
+  technical-anonymous-login-web-id.md:
+    title: Anonymous Login with WEB-ID
   technical-hti-launch-compose.md:
     title: HTI - Composing a launch
   technical-hti-launch-receive.md:
@@ -148,6 +150,7 @@ menu:
     Authenticating the application: technical-client-authentication.html
     Accessing the Pod: technical-pod-access.html
     Anonymous Login: technical-anonymous-login.html
+    Anonymous Login with WEB-ID: technical-anonymous-login-web-id.html
     HTI, composing a launch: technical-hti-launch-compose.html
     HTI, receiving a launch: technical-hti-launch-receive.html
     Research Data Access: technical-research-data.html
