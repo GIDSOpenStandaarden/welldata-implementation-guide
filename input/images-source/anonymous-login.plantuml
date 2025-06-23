@@ -1,0 +1,57 @@
+@startuml
+title IDP implementation - Anonymous login - Create webid and pod
+actor "Alice" as Alice
+participant "Welldata FE" as welldataFE
+participant "Welldata BE" as welldataBE
+participant "We Are IDP" as customBroker
+participant "Nuts Anonymous IDP" as nutsAIDP
+participant "We Are IDP DB" as customBrokerDB
+
+
+Alice->welldataFE:login
+welldataFE->welldataBE:/login
+welldataBE->Alice: redirect to weareFE
+Alice->weareFE:/login
+weareFE->weareBE:get IDP's
+note over weareBE: where are you from pattern
+weareBE->weareFE: acm/idm url + anonymousId url
+weareFE->Alice: choose IDP
+Alice->weareFE: anonymousId
+weareFE->customBroker: /login
+customBroker->nutsAIDP: /auth
+note over nutsAIDP: http://ms-auth.sns.gidsopenstandaarden.org/oidc/authorize?response_type=code&client_id=x&redirect_uri=y&state=x&scope=openid
+nutsAIDP->Alice: provide anonymous login credentials
+Alice->nutsAIDP: MS Authenticator credentials exchange
+nutsAIDP->customBroker: <redirect_uri>?code=x&state=y
+customBroker->nutsAIDP: code uitwisselen voor access token en id token
+nutsAIDP-->customBroker: id token and access token
+
+customBroker->customBroker: decode token and get sub
+customBroker->customBrokerDB: get webId for sub
+customBrokerDB->customBroker: no webId
+customBroker->customBroker: generate uuid for WebID
+customBroker->customBroker: generate access token / id token
+customBroker->inruptWebIdService: create webid Document
+note over inruptWebIdService: POST https://id.<fslkfsmf>/<generatedUUID> with id token (I think) https://docs.inrupt.com/ess/latest/services/service-webid/#authentication-and-authorization-requirements Weare IDP tokens are ok
+inruptWebIdService->customBroker: webiddocument
+customBroker->customBrokerDB: store webId + sub
+customBrokerDB->customBroker: ok
+
+customBroker->inruptPodService: create pod for webId
+note over inruptPodService: POST https://provision.{ESS domain}/ https://docs.inrupt.com/ess/latest/services/service-pod-provision/#pod-provisioning-service
+inruptPodService->customBroker: pod created
+customBroker->inruptWebIdService: update webId document with pod
+inruptWebIdService->customBroker: updated
+
+note over customBroker: User authenticated and pod created. Exchange auth code for access token
+customBroker->weareBE: auth code
+weareBE->customBroker: /token?code=x&state=y&challenge=z
+customBroker->weareBE: access token + id token
+weareBE->weareFE: show page to proceed
+weareFE->weareBE: fetch HTI token
+weareBE->weareBE: extract webid from id token
+
+weareBE->weareBE: create HTI token for application
+weareBE->weareFE: pass HTI token to page to submit HTI token
+weareFE->welldataBE: submit HTI token
+@enduml

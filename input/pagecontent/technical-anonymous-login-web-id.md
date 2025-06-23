@@ -30,14 +30,23 @@ The current VKN implementation provides anonymous authentication through the MS 
 
 ## Implementation Requirements
 
-### 1. Prerequisites
+### Prerequisites
 
 - Existing VKN OIDC implementation with MS Auth middleware
 - Valid credentials for Athumi Pod Platform API
 - HTTPS endpoints for all services
 - Proper error handling and logging mechanisms
 
-### 2. Authentication Flow Extensions
+### Authentication Flow Extensions
+
+### Complete Anonymous Authentication Flow
+
+In the sequence diagram below, you can find the complete authentication flow for the Anonymous authentication.
+
+{::nomarkdown}
+{% include anonymous-login.svg %}
+{:/}
+
 
 #### Step 1: Standard Anonymous Authentication
 Continue with the existing OAuth2 flow as documented:
@@ -57,21 +66,21 @@ async function handlePostAuthentication(idToken: string) {
         // 1. Extract user identifier from JWT
         const userInfo = validateAndExtractJWT(idToken);
         const anonymousUserId = userInfo.sub; // Anonymous user ID
-        
+
         // 2. Check if WebID already exists
         const existingWebId = await checkExistingWebId(anonymousUserId);
         if (existingWebId) {
             return existingWebId;
         }
-        
+
         // 3. Create new WebID and pod
         const webId = await createWebIdForAnonymousUser(anonymousUserId);
-        
+
         // 4. Store mapping for future reference
         await storeUserWebIdMapping(anonymousUserId, webId);
-        
+
         return webId;
-        
+
     } catch (error) {
         console.error('WebID creation failed:', error);
         // Decide whether to continue without WebID or fail
@@ -80,7 +89,7 @@ async function handlePostAuthentication(idToken: string) {
 }
 ```
 
-### 3. Athumi Pod Platform Integration
+### Athumi Pod Platform Integration
 
 #### Configuration Requirements
 
@@ -101,16 +110,16 @@ interface PodPlatformConfig {
 async function createWebIdForAnonymousUser(anonymousUserId: string): Promise<string> {
     // 1. Obtain SOLID OIDC token for citizen authentication
     const solidToken = await getSolidOIDCToken(anonymousUserId);
-    
+
     // 2. Call Athumi Pod Platform to create WebID and pod
     const webId = await createWebIdViaPodPlatform(solidToken);
-    
+
     return webId.uri;
 }
 
 async function createWebIdViaPodPlatform(solidToken: string): Promise<WebId> {
     const correlationId = generateCorrelationId();
-    
+
     const response = await fetch(`${POD_PLATFORM_BASE_URL}/v1/webids`, {
         method: 'PUT',
         headers: {
@@ -119,17 +128,17 @@ async function createWebIdViaPodPlatform(solidToken: string): Promise<WebId> {
             'Content-Type': 'application/json'
         }
     });
-    
+
     if (!response.ok) {
         const error = await response.json();
         throw new Error(`WebID creation failed: ${error.detail}`);
     }
-    
+
     return await response.json();
 }
 ```
 
-### 4. Token Management
+### Token Management
 
 #### SOLID OIDC Token Generation
 
@@ -140,7 +149,7 @@ async function getSolidOIDCToken(anonymousUserId: string): Promise<string> {
     // Generate SOLID OIDC token with anonymous user as subject
     // This should include the anonymous user ID in the sub claim
     // and conform to SOLID OIDC specifications
-    
+
     const tokenPayload = {
         sub: anonymousUserId,
         iss: VKN_ISSUER_URL,
@@ -149,12 +158,12 @@ async function getSolidOIDCToken(anonymousUserId: string): Promise<string> {
         iat: Math.floor(Date.now() / 1000),
         webid: `${VKN_BASE_URL}/webid/${anonymousUserId}` // Temporary WebID reference
     };
-    
+
     return jwt.sign(tokenPayload, PRIVATE_KEY, { algorithm: 'RS256' });
 }
 ```
 
-### 5. Data Storage and Mapping
+### Data Storage and Mapping
 
 #### User-WebID Mapping Storage
 
@@ -168,7 +177,7 @@ interface UserWebIdMapping {
 
 // Store mapping in secure database
 async function storeUserWebIdMapping(
-    anonymousUserId: string, 
+    anonymousUserId: string,
     webId: string
 ): Promise<void> {
     const mapping: UserWebIdMapping = {
@@ -177,7 +186,7 @@ async function storeUserWebIdMapping(
         createdAt: new Date(),
         lastAccessed: new Date()
     };
-    
+
     await database.userWebIdMappings.create(mapping);
 }
 
@@ -186,22 +195,22 @@ async function checkExistingWebId(anonymousUserId: string): Promise<string | nul
     const mapping = await database.userWebIdMappings.findOne({
         anonymousUserId
     });
-    
+
     if (mapping) {
         // Update last accessed
         await database.userWebIdMappings.updateOne(
             { anonymousUserId },
             { lastAccessed: new Date() }
         );
-        
+
         return mapping.webId;
     }
-    
+
     return null;
 }
 ```
 
-### 6. Enhanced JWT Response
+### Enhanced JWT Response
 
 Update the existing JWT response to include WebID information:
 
@@ -213,12 +222,12 @@ async function generateEnhancedJWT(originalJWT: any, webId: string): Promise<str
         pod_access: true,  // Indicate pod access availability
         welldata_integration: true  // Flag for WellData ecosystem integration
     };
-    
+
     return jwt.sign(enhancedPayload, PRIVATE_KEY, { algorithm: 'RS256' });
 }
 ```
 
-### 7. Error Handling and Fallback
+### Error Handling and Fallback
 
 ```typescript
 class WebIdCreationError extends Error {
@@ -233,21 +242,21 @@ async function handleWebIdCreationWithFallback(anonymousUserId: string): Promise
         return await createWebIdForAnonymousUser(anonymousUserId);
     } catch (error) {
         console.error(`WebID creation failed for user ${anonymousUserId}:`, error);
-        
+
         // Log for monitoring and debugging
         await logWebIdCreationFailure(anonymousUserId, error);
-        
+
         // Depending on requirements, either:
         // 1. Return null and continue without WebID
         // 2. Retry with exponential backoff
         // 3. Throw error and fail authentication
-        
+
         return null; // Graceful degradation
     }
 }
 ```
 
-### 8. Configuration Updates
+### Configuration Updates
 
 #### Environment Variables
 
@@ -272,7 +281,7 @@ VKN_BASE_URL=https://your-vkn-backend.example.com
 WEBID_MAPPING_DB_URL=your_database_connection_string
 ```
 
-### 9. API Flow Integration
+### API Flow Integration
 
 #### Updated Step 4: Enhanced Token Response
 
@@ -282,10 +291,10 @@ Modify the existing Step 4 (unpack and validate id_token) to include WebID creat
 async function enhancedStep4(idToken: string): Promise<AuthResult> {
     // Original validation
     const tokenData = validateJWT(idToken);
-    
+
     // New: WebID creation/retrieval
     const webId = await handleWebIdCreationWithFallback(tokenData.sub);
-    
+
     // Enhanced response
     const authResult: AuthResult = {
         userId: tokenData.sub,
@@ -294,12 +303,12 @@ async function enhancedStep4(idToken: string): Promise<AuthResult> {
         enhancedToken: webId ? await generateEnhancedJWT(tokenData, webId) : idToken,
         podAccess: !!webId
     };
-    
+
     return authResult;
 }
 ```
 
-### 10. Monitoring and Logging
+### Monitoring and Logging
 
 ```typescript
 interface WebIdMetrics {
@@ -310,7 +319,7 @@ interface WebIdMetrics {
 }
 
 async function logWebIdCreationFailure(
-    anonymousUserId: string, 
+    anonymousUserId: string,
     error: Error
 ): Promise<void> {
     const logEntry = {
@@ -321,15 +330,15 @@ async function logWebIdCreationFailure(
         stackTrace: error.stack,
         correlationId: getCurrentCorrelationId()
     };
-    
+
     await errorLogger.log(logEntry);
-    
+
     // Optional: Send alerts for high failure rates
     await checkAndAlertOnFailureRates();
 }
 ```
 
-### 11. Testing Strategy
+### Testing Strategy
 
 #### Unit Tests
 
@@ -338,14 +347,14 @@ describe('WebID Creation Integration', () => {
     test('should create WebID for new anonymous user', async () => {
         const mockUserId = 'anon_user_123';
         const expectedWebId = 'https://pod.example.com/webid/123';
-        
+
         // Mock Pod Platform API response
         mockPodPlatformAPI.createWebId.mockResolvedValue({
             uri: expectedWebId
         });
-        
+
         const result = await createWebIdForAnonymousUser(mockUserId);
-        
+
         expect(result).toBe(expectedWebId);
         expect(mockPodPlatformAPI.createWebId).toHaveBeenCalledWith(
             expect.objectContaining({
@@ -355,16 +364,16 @@ describe('WebID Creation Integration', () => {
             })
         );
     });
-    
+
     test('should return existing WebID for returning user', async () => {
         const mockUserId = 'anon_user_456';
         const existingWebId = 'https://pod.example.com/webid/456';
-        
+
         // Setup existing mapping
         await storeUserWebIdMapping(mockUserId, existingWebId);
-        
+
         const result = await handlePostAuthentication(createMockJWT(mockUserId));
-        
+
         expect(result).toBe(existingWebId);
         // Should not call Pod Platform API
         expect(mockPodPlatformAPI.createWebId).not.toHaveBeenCalled();
@@ -380,20 +389,20 @@ describe('Full Authentication Flow with WebID', () => {
         // Test full flow from authorization code to WebID creation
         const authCode = 'test_auth_code';
         const mockIdToken = createMockIdToken();
-        
+
         // Mock MS Auth middleware response
         mockAuthMiddleware.exchangeCode.mockResolvedValue({
             access_token: 'access_token',
             id_token: mockIdToken
         });
-        
+
         // Mock Pod Platform
         mockPodPlatformAPI.createWebId.mockResolvedValue({
             uri: 'https://pod.example.com/webid/test'
         });
-        
+
         const result = await processAuthenticationFlow(authCode);
-        
+
         expect(result.webId).toBeDefined();
         expect(result.podAccess).toBe(true);
     });
