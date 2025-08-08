@@ -31,16 +31,15 @@ Observations are stored in the pod at the following location as a [FHIR resource
 
 Observations can contain all measured values about a patient. In our project we cover the following observations with the according SNOMED-CT codes:
 
-| Name | Description | SNOMED-CT |
-| -------- | -------- | -------- |
-| cholesterol_ratio	| Totaal / HDL cholesterol | 313811003 |
-| cholesterol_total	| Totaal cholesterol | 77068002 |
-| cholesterol_hdl | HDL cholesterol | 02737005 |
-| length | Lengte (cm) | 50373000 |
-| weight | Gewicht (kg) | 27113001 |
-| BMI | BMI | 60621009 |
-| WaistCircumference | Buikomtrek  (cm) | 276361009 |
-| SBP | Systolische bloeddruk (mmHg) | 271649006 |
+| Name | Description | SNOMED-CT | Application
+| -------- | -------- | -------- | -------- |
+| cholesterol_ratio	| Totaal / HDL cholesterol | 313811003 | GGDM & Selfcare |
+| cholesterol_total	| Totaal cholesterol | 77068002 | GGDM & Selfcare |
+| cholesterol_hdl | HDL cholesterol | 02737005 | GGDM & Selfcare |
+| length | Lengte (cm) | 50373000 | WellData, GGDM & Selfcare |
+| weight | Gewicht (kg) | 27113001 | WellData, GGDM & Selfcare |
+| WaistCircumference | Buikomtrek  (cm) | 276361009 | GGDM & Selfcare |
+| SBP | Systolische bloeddruk (mmHg) | 271649006 | GGDM & Selfcare |
 
 An example of each observation can be found below:
 
