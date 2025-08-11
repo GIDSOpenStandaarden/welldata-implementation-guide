@@ -55,7 +55,7 @@ Observations can contain all measured values about a patient. In our project we 
 | postcode | postcode | 184099003 (Snomed) | x | x | x | | 
 | work | werksituatie | / | x | | x | | 
 
-More information can be found in the sharepoint excel: https://vitoresearch.sharepoint.com/:x:/r/sites/21309-mydata4ourhealth2/Shared%20Documents/General/01%20Werkpakketten/WP3/A.3.1/Deliverables%2031-05-2025/Appendix%203.%20Alignering%20basis-set%20met%20parameters%20in%20project%20applicaties.xlsx?d=w12efbd9a8b924a709fa4dca1e92a1b84&csf=1&web=1&e=dwbZ2y 
+More information can be found in the sharepoint excel: WP3 > Deliverables > "Appendix 3. Alignering basis-set met parameters in project applicaties"
 
 
 
