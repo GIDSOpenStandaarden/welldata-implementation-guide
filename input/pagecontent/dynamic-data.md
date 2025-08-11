@@ -31,8 +31,8 @@ Observations are stored in the pod at the following location as a [FHIR resource
 
 Observations can contain all measured values about a patient. In our project we cover the following observations with the according SNOMED-CT codes:
 
-| Name | Description | SNOMED-CT |
-| -------- | -------- | -------- |
+| Name | Description | SNOMED-CT | Applicaties |
+| -------- | -------- | -------- | -------- |
 | cholesterol_ratio	| Totaal / HDL cholesterol | 313811003 |
 | cholesterol_total	| Totaal cholesterol | 77068002 |
 | cholesterol_hdl | HDL cholesterol | 02737005 |
