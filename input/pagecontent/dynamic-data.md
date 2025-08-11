@@ -31,16 +31,30 @@ Observations are stored in the pod at the following location as a [FHIR resource
 
 Observations can contain all measured values about a patient. In our project we cover the following observations with the according SNOMED-CT codes:
 
-| Name | Description | SNOMED-CT | Intake vragenlijst | GGDM | Zipster | Selfcare |
+| Name | Description | CODE | Intake vragenlijst | GGDM | Zipster | Selfcare |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| physical_limitation	| aanwezigheid fysieke beperking | 32572006 | x |  | x |  |
-| length | Lengte (cm) | 50373000 | x | x |  | x |
-| weight | Gewicht (kg) | 27113001 | x | x |  | x |
-| WaistCircumference | Buikomtrek  (cm) | 276361009 |  | x |  | x |
-| SBP | Systolische bloeddruk (mmHg) | 271649006 |  | x |  | x |
-| cholesterol_total	| Totaal cholesterol | 77068002 |   | x |  | x |
-| cholesterol_hdl | HDL cholesterol | 02737005 |  | x |  | x |
-| cholesterol_ratio	| Totaal / HDL cholesterol | 313811003 |  | x |  | x |
+| physical_limitation	| aanwezigheid fysieke beperking | 32572006 (Snomed) | x |  | x |  |
+| length | Lengte (cm) | 50373000 (Snomed) | x | x |  | x |
+| weight | Gewicht (kg) | 27113001 (Snomed) | x | x |  | x |
+| Waist_circumference | Buikomtrek  (cm) | 276361009 (Snomed) |  | x |  | x |
+| SBP | Systolische bloeddruk (mmHg) | 271649006 (Snomed) |  | x |  | x |
+| cholesterol_total	| Totaal cholesterol | 77068002 (Snomed) |   | x |  | x |
+| cholesterol_hdl | HDL cholesterol | 02737005 (Snomed) |  | x |  | x |
+| cholesterol_ratio	| Totaal / HDL cholesterol | 313811003 (Snomed) |  | x |  | x |
+| stress | Stress ervaring | 68011-6 (Loinc) | x | | x | | 
+| daily_life | Dagelijks leven | 91621-3 (Loinc) | x | |  | x | 
+| social_contact | Voldoening uit sociale contacten | 61581-5 (Loinc) | x | | x | x | 
+| physical_exercise | beweegminuten | 228450008 (Snomed) | x | x | | x | 
+| smoking | roken (ja/nee) | 63638-1	(Loinc) & 77176002 (Snomed) | x | x | | | 
+| smoking_cigarettes | Hoeveel sigaretten per dag roken | 63640-7	(Loinc) | x | x | | | 
+| alcohol | Alcohol drinken | 897148007 (Snomed)	| x | x | | | 
+| alcohol_Frequency | How often do you have a drink containing alcohol | 68518-0	(Loinc) | x | x | | | 
+| alcohol_normalConsumption | How many standard drinks containing alcohol do you have on a typical day? | 68519-8	(Loinc) | x | x | | | 
+| alcohol_excessiveConsumption | How often do you have 6 or more drinks on 1 occasion? | 68520-6 (Loinc) | x | x | | | 
+| birthdate | geboortedatum (dd/mm/yyyy) | 184099003 (Snomed) | x | x | x | | 
+| postcode | postcode | 184099003 (Snomed) | x | x | x | | 
+| work | werksituatie | / | x | | x | | 
+
 
 
 
