@@ -33,14 +33,18 @@ Observations can contain all measured values about a patient. In our project we 
 
 | Name | Description | SNOMED-CT | Intake vragenlijst | GGDM | Zipster | Selfcare |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| cholesterol_ratio	| Totaal / HDL cholesterol | 313811003 | | x | | x |
-| cholesterol_total	| Totaal cholesterol | 77068002 | G
-| cholesterol_hdl | HDL cholesterol | 02737005 |
-| length | Lengte (cm) | 50373000 |
-| weight | Gewicht (kg) | 27113001 |
-| BMI | BMI | 60621009 |
-| WaistCircumference | Buikomtrek  (cm) | 276361009 |
-| SBP | Systolische bloeddruk (mmHg) | 271649006 |
+| physical_limitation	| aanwezigheid fysieke beperking | 32572006 | x |  | x |  |
+| length | Lengte (cm) | 50373000 | x | x |  | x |
+| weight | Gewicht (kg) | 27113001 | x | x |  | x |
+| WaistCircumference | Buikomtrek  (cm) | 276361009 |  | x |  | x |
+| SBP | Systolische bloeddruk (mmHg) | 271649006 |  | x |  | x |
+| cholesterol_total	| Totaal cholesterol | 77068002 |   | x |  | x |
+| cholesterol_hdl | HDL cholesterol | 02737005 |  | x |  | x |
+| cholesterol_ratio	| Totaal / HDL cholesterol | 313811003 |  | x |  | x |
+
+
+
+
 
 An example of each observation can be found below:
 
