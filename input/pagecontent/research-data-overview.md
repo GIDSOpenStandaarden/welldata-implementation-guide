@@ -11,15 +11,15 @@ The WellData project facilitates the secure and ethical exchange of well-being d
      Trusts       ┌─────────────┐        Qualifies
        ┌──────────►Trusted Party│─────────────┐
        │          └─────────────┘             │
-       │                                      │
-       │                                      │
+       │                  │                   │
+       │                  │                   │
    ┌──────┐                              ┌────▼─────┐
-   │ User │─────► Consent + Data ◄───────│Researcher│
+   │ User │─────► Consent + Data         │Researcher│
    └──────┘               │              └──────────┘
-       │                  │
-       │                  │
- ┌─────────────┐     ┌──────────┐
- │ Application │     │Data Store│
+       │                  │                   │
+       │                  │                   │
+ ┌─────────────┐     ┌──────────┐             │
+ │ Application │     │Data Store│ ◄───────────┘
  └─────────────┘     └──────────┘
 
                           │
