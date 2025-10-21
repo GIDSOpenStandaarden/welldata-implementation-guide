@@ -1,22 +1,25 @@
 @startuml
-title Solid OIDC Flow
+title Authentication Flow with HTI Token
 actor "User" as user
 participant "Welldata FE" as welldataFE
 participant "Welldata BE" as welldataBE
 participant "ACM/IDM" as acm
+participant "We Are" as weare
 
 
 group Solid OIDC Flow
   user->welldataFE: login
 
   welldataFE->welldataBE: GET https://<backend>/login
-  welldataBE->acm: GET https://authenticatie-ti.vlaanderen.be/op/v1/auth
+  welldataBE->weare: redirect GET https://we-are-acc.vito.be/nl/hti/launch?client_id=&redirect_uri=
+  weare->acm: redirect GET https://authenticatie-ti.vlaanderen.be/op/v1/auth
   acm->user:prompt authentication
   user-->acm: provide credentials
-  acm-->welldataBE: GET https://<backend>/oidc-redirect?code=<>&state=<>
-  welldataBE->acm: POST https://authenticatie-ti.vlaanderen.be/op/v1/token
-  acm-->welldataBE: access token and id token incl. webId
-  welldataBE->welldataFE: user logged in and redirect back to original redirect url
+  acm-->weare: GET https://<backend>/oidc-redirect?code=<>&state=<>
+  weare->acm: POST https://authenticatie-ti.vlaanderen.be/op/v1/token
+  acm-->weare: access token and id token incl. webId
+  weare->weare: create HTI token
+  weare->welldataFE: user logged in and redirect back to original redirect url via post and HTI token in post body
 
 end
 @enduml

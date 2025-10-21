@@ -1,7 +1,15 @@
 The OIDC/SOLID-OIDC specification defines how owners of the pods need to authenticate towards an IDP and how resource servers can verify the identity of pod owners based on that authentication.
 The SOLID-OIDC flow is described in detail [here](https://solidproject.org/TR/oidc-primer#solid-oidc-flow)
 
-For the Welldata implementation we filled in the correct endpoints for our ACC environment.
+All applications who are registered in the We Are IDP, can make use of the HTI token flow. The flow is show below:
+
+<img src="HTI-flow.png" alt="Anonymous login" style="width: 50%; float: none;"/>
+
+All applications are first directed to the We Are login flow. There the user needs to choose a valid IDP. For now supported are ACM/IDM and NUTS via Microsoft Authenticator.
+When selecting an IDP the user is directed to either the NUTS OIDC flow or ACM/IDM Solid OIDC flow. Upon authentication a token will be generated and provided to the We Are Platform.
+There the token will be unpacked and the webId will be extracted and a new token is created: the HTI-token. This token contains the webId in the sub, which is the necessary information that the application (Welldata/Zipster/Selfcare/GG) needs to start the Access Request flow to acces the pod of the user.
+
+We describe the complete flow with as example the Welldata application:
 
 {::nomarkdown}
 {% include solid-oidc.svg %}
@@ -9,7 +17,7 @@ For the Welldata implementation we filled in the correct endpoints for our ACC e
 
 ### User initiates login
 
-The Solid OIDC flow is initiated by the user, triggering a login action on the Welldata Frontend application
+The We Are login flow is initiated by the user, triggering a login action on the Welldata Frontend application
 
 ### Calling backend
 
@@ -19,15 +27,19 @@ In the call from the frontend to the backend the redirect url should be passed t
 https://<backend>/login?redirectUrl=<front end redirecturl>
 ```
 
-### Redirect to IDP
+### Redirect to We Are
 
-The backend initiates a redirect of the user to the IDP which can authenticate the user:
+The backend initiates a redirect of the user to We Are and We Are will then redirect the user to the IDP which can authenticate the user:
 
 ```
+redirect GET https://we-are-acc.vito.be/nl/hti/launch?client_id=&redirect_uri=
 https://authenticatie-ti.vlaanderen.be/op/v1/auth?client_id=<>&scope=openid+offline_access+webid+rrn&response_type=code&redirect_uri=<backend-url>/oidc-redirect&code_challenge<>&state=<>&code_challenge_method=S256&prompt=consent
 ```
+The parameters for the HTI flow passed to We Are are:
+- client_id: Identifies the client application that wants to start the We Are login flow. This client needs to be registered in the We Are IDP.
+- redirect_uri: the redirect URI to which the users needs to be redirected back upon completion of authentication.
 
-The folowing parameters are passed in the call
+Next We Are will forward the user to the authentication endpoint of the IDP passing the following parameters:
 
 - client_id: Identifies the client application that is making the request. This is assigned by the identity provider (in this case, authenticatie-ti.vlaanderen.be).
 - scope: Specifies the access rights the application is requesting. In this case:
@@ -50,7 +62,7 @@ In the next 2 steps the user is prompted to authenticate himself using credentia
 
 ### Authorization code is exchanged with the backend
 
-After authentication the user is redirected with a call to the Welldata backend.
+After authentication the user is redirected with a call to the We Are backend.
 ```
 https://<backend>/oidc-redirect?code=<>&state=<>
 ```
@@ -79,12 +91,15 @@ The following parameters in the body are required for this call:
 
 The IDP broker will now return the access token and id token of the user and the user is logged in.
 
+### We Are creates the HTI token and passes it to the Welldata application
+
+Next step the HTI token is created with the corresponding webId in the sub of the HTI token. The token is then passed via a post to the Welldata application and directs the user back to the redirect URL of Welldata.
 
 ### Example implementation in We Are Demo Application
 
-The We Are consortium developed a demo application showcasing all the different steps necessary to read, write and share resources in a pod. 
+The We Are consortium developed a demo application showcasing all the different steps necessary to read, write and share resources in a pod.
 
-Starting an authentication flow from the frontend application is explained in the Authentication part of the front end demo application, which can be found [here](https://github.com/VITObelgium/We-Are-Demo-Front-End). 
+Starting an authentication flow from the frontend application is explained in the Authentication part of the front end demo application, which can be found [here](https://github.com/VITObelgium/We-Are-Demo-Front-End).
 
 This angular front end app will then redirect the user to `login`endpoint of the [We Are Backend application](https://github.com/VITObelgium/We-Are-Demo-Back-End). In order to successfully start the login flow, the right environment variables need to be set on the backend application:
 
