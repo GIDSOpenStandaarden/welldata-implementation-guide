@@ -1,0 +1,32 @@
+@startuml
+title Token-Based FHIR Service Access
+
+participant "App" as app
+participant "FHIR Service" as fhir
+database "Instance\nStore" as store
+participant "Pod" as pod
+
+app->fhir: GET /Patient/123\nAuthorization: Bearer <token>
+activate fhir
+
+fhir->fhir: Extract jti or\ncompute token hash
+
+fhir->store: Lookup instance\nby jti/hash
+activate store
+store-->fhir: Return instance\n(or null)
+deactivate store
+
+alt Instance exists and not expired
+    fhir->fhir: Use cached data
+else Instance missing or expired
+    fhir->pod: Load data using\nsame Bearer token
+    activate pod
+    pod-->fhir: RDF data
+    deactivate pod
+    fhir->store: Store new instance\nwith exp from token
+end
+
+fhir-->app: FHIR Patient resource
+deactivate fhir
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+title FHIR Service Write Operation
+
+participant "App" as app
+participant "FHIR Service" as fhir
+participant "Pod" as pod
+
+app->fhir: 1. PUT /Observation/123
+activate fhir
+
+fhir->fhir: 2. Validate against\nWellData profile
+
+fhir->fhir: 3. Update in-memory store\n& search indices
+
+fhir->pod: 4. PUT .ttl file\n(/weare/fhir/Observation/123.ttl)
+activate pod
+pod-->fhir: 5. 200 OK
+deactivate pod
+
+fhir-->app: 6. 200 OK\n(FHIR OperationOutcome)
+deactivate fhir
+
+@enduml

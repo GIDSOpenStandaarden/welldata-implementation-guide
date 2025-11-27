@@ -99,6 +99,8 @@ pages:
     title: Client Authentication
   technical-research-data.md:
     title: Research Data Access
+  technical-ephemeral-fhir-service.md:
+    title: Ephemeral FHIR Service
   hackathon-hti-launch.md:
     title: HTI Launch
 
@@ -156,5 +158,6 @@ menu:
     HTI, composing a launch: technical-hti-launch-compose.html
     HTI, receiving a launch: technical-hti-launch-receive.html
     Research Data Access: technical-research-data.html
+    Ephemeral FHIR Service: technical-ephemeral-fhir-service.html
   Hackathon:
     HTI Launch: hackathon-hti-launch.html

@@ -1,0 +1,29 @@
+@startuml
+title FHIR Service Initialization (Token-Bound)
+
+participant "App" as app
+participant "FHIR Service" as fhir
+participant "Pod" as pod
+
+app->fhir: GET /Patient\nAuthorization: Bearer <token>
+activate fhir
+
+fhir->fhir: Extract jti (or hash token)\nLookup instance
+
+alt Instance not found (new token)
+    fhir->fhir: Create new instance\nSet expiry from token exp claim
+
+    fhir->pod: Load containers\n(GET /weare/fhir/Patient/)\n(GET /weare/fhir/Observation/)\n...
+    activate pod
+    pod-->fhir: Return RDF data (.ttl files)
+    deactivate pod
+
+    fhir->fhir: Transform RDF to FHIR JSON\nBuild search indices
+end
+
+fhir->fhir: Process FHIR request
+
+fhir-->app: FHIR Bundle response
+deactivate fhir
+
+@enduml
