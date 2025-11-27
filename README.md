@@ -1,14 +1,62 @@
-# WellData FHIR implementation guide
+# WellData FHIR Implementation Guide
 
-Building this guide requires the following tools:
+This repository contains the FHIR Implementation Guide for the WellData project.
+
+## Prerequisites
+
 * Docker
 
-## Building the guide on the local machine
+## Building the Docker Image
+
 ```shell
-docker build . -t gidsopenstandaarden-welldata-ig && docker run -v ./input:/app/input -v ./output:/app/output -v ./tmp:/tmp/ -v ./root:/root  -it gidsopenstandaarden-welldata-ig
+docker build . -t gidsopenstandaarden-welldata-ig
+```
+
+## Available Make Targets
+
+| Target | Description |
+|--------|-------------|
+| `build` | Run the complete FHIR build process (full documentation package) |
+| `sushi` | Run SUSHI only (quick FSH validation) |
+| `version` | Show the current version from sushi-config.yaml |
+| `clean` | Clean build artifacts |
+| `help` | Show help message |
+
+## Usage
+
+### Full IG Build
+
+```shell
+docker run --rm -v "${PWD}:/src" gidsopenstandaarden-welldata-ig build
 ```
 
 The result can be viewed in the `./output` folder.
 
-### Building the guide using github actions
-The guide is build using github actions. The result is published on https://gidsopenstandaarden.github.io/welldata-implementation-guide/
+### SUSHI Validation Only
+
+For quick FSH syntax validation without running the full IG publisher:
+
+```shell
+docker run --rm -v "${PWD}:/src" gidsopenstandaarden-welldata-ig sushi
+```
+
+### Show Help
+
+```shell
+docker run --rm -v "${PWD}:/src" gidsopenstandaarden-welldata-ig help
+```
+
+## Output Formats
+
+The IG Publisher generates resources in multiple formats:
+
+| Format | Location | Config |
+|--------|----------|--------|
+| JSON | `output/*.json` | Always generated |
+| TTL (RDF) | `output/*.ttl` | `excludettl: false` in sushi-config.yaml |
+| XML | `output/*.xml` | `excludexml: false` in sushi-config.yaml |
+
+## GitHub Actions
+
+The guide is automatically built using GitHub Actions. The result is published at:
+https://gidsopenstandaarden.github.io/welldata-implementation-guide/

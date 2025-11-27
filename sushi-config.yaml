@@ -12,7 +12,7 @@ title: WellData Implementation Guide
 status: draft # draft | active | retired | unknown
 version: 0.1.0
 fhirVersion: 4.0.1
-FSHOnly: true
+FSHOnly: false
 applyExtensionMetadataToRoot: false
 copyrightYear: 2024+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -22,6 +22,19 @@ publisher:
   name: gidsopenstandaarden
   url: https://www.gidsopenstandaarden.org
   # email: test@example.org
+
+# The parameters property represents IG.definition.parameter. Rather
+# than a list of code/value pairs (as in the ImplementationGuide
+# resource), the code is the YAML key. If a parameter allows repeating
+# values, the value in the YAML should be a sequence/array.
+# For parameters defined by core FHIR see:
+# http://build.fhir.org/codesystem-guide-parameter-code.html
+# For parameters defined by the FHIR Tools IG see:
+# http://build.fhir.org/ig/FHIR/fhir-tools-ig/branches/master/CodeSystem-ig-parameters.html
+#
+parameters:
+  excludettl: false
+  excludexml: true
 
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced

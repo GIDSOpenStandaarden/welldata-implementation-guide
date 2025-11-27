@@ -35,6 +35,8 @@ jobs:
           - 5000:5000
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -44,20 +46,18 @@ jobs:
       - name: Build and push to local registry
         uses: docker/build-push-action@v6
         with:
+          context: .
           push: true
-          tags: localhost:5000/gidsopenstandaarden/publisher:latest
-      - name: Checkout
-        uses: actions/checkout@v4
+          tags: localhost:5000/gidsopenstandaarden/welldata-ig:latest
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build
         run: |
           mkdir -p ./output
-          docker run --name=scp --rm -v ./ig.ini:/app/ig.ini  -v ./sushi-config.yaml:/app/sushi-config.yaml -v ./input:/app/input -v ./output:/app/output localhost:5000/gidsopenstandaarden/publisher:latest
+          docker run --rm -v "${PWD}:/src" localhost:5000/gidsopenstandaarden/welldata-ig:latest build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: './output'
       - name: Deploy to GitHub Pages
         id: deployment
