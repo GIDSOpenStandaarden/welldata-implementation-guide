@@ -190,14 +190,14 @@ jobs:
 
             Install this package on your FHIR server:
             ```bash
-            fhir install fhir.gidsopenstandaarden.welldata-${{ needs.build.outputs.version }}.tgz
+            fhir install welldata-${{ needs.build.outputs.version }}.tgz
             ```
 
             ## Documentation
 
             View the full Implementation Guide at: https://gidsopenstandaarden.github.io/welldata-implementation-guide
           files: |
-            ./build/output/fhir.gidsopenstandaarden.welldata-${{ needs.build.outputs.version }}.tgz
+            ./build/output/welldata-${{ needs.build.outputs.version }}.tgz
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -233,10 +233,10 @@ jobs:
 
             Install this package on your FHIR server:
             ```bash
-            fhir install fhir.gidsopenstandaarden.welldata-${{ needs.build.outputs.version }}.tgz
+            fhir install welldata-${{ needs.build.outputs.version }}.tgz
             ```
           files: |
-            ./build/output/fhir.gidsopenstandaarden.welldata-${{ needs.build.outputs.version }}.tgz
+            ./build/output/welldata-${{ needs.build.outputs.version }}.tgz
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
