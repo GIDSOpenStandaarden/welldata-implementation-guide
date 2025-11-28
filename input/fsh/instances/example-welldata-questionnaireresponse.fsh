@@ -1,7 +1,9 @@
 Instance: questionnaireresponse-zipster
 InstanceOf: WellDataQuestionnaireResponse
+Usage: #example
 Title: "Antwoorden Zipster Vragenlijst 3.0"
 Description: "Example QuestionnaireResponse filled in for the Zipster questionnaire (versie 3.0)."
+* id = "questionnaireresponse-zipster"
 * identifier.system = "https://well-data.example.org/fhir/QuestionnaireResponse"
 * identifier.value = "zipster-3-0-response-001"
 * questionnaire = "Questionnaire/questionnaire-zipster"

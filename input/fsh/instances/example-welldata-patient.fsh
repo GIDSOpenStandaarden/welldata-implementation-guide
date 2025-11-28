@@ -1,13 +1,15 @@
 Instance: example-welldata-patient
 InstanceOf: WellDataPatient
+Usage: #example
 Title: "Voorbeeld WellData-patiënt"
 Description: "Example Patient resource illustrating the recommended data elements for the WellData project."
+* id = "example-welldata-patient"
 * meta.versionId = "1"
 * meta.lastUpdated = "2025-06-10T08:30:00+02:00"
 
 // --- Narrative -------------------------------------------------------------
 * text.status = #generated
-* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>John Doe — voorbeeld patiënt voor WellData</p></div>"
+* text.div = "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>John Doe — voorbeeld patiënt voor WellData</p></div>"
 
 // --- Identifiers -----------------------------------------------------------
 * identifier[0].system = "https://well-data.example.org/fhir/Patient"
@@ -52,8 +54,10 @@ Description: "Example Patient resource illustrating the recommended data element
 // ===========================================================================
 Instance: example-welldata-patient-nl
 InstanceOf: WellDataPatient
+Usage: #example
 Title: "Voorbeeld WellData-patiënt (NL)"
 Description: "Example Dutch Patient resource for the WellData project."
+* id = "example-welldata-patient-nl"
 * meta.versionId = "1"
 * meta.lastUpdated = "2025-06-11T10:00:00+02:00"
 

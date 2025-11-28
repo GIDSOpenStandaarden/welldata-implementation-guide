@@ -40,9 +40,15 @@ Description: "QuestionnaireResponse profile used in the WellData project to pers
 * item.linkId 1..1 MS
 * item.answer MS
 
-* item.answer.value[x] only string or Coding
+* item.answer.value[x] only string or Coding or integer or decimal or boolean or date or dateTime or Quantity
 * item.answer.valueString MS
 * item.answer.valueCoding MS
+* item.answer.valueInteger MS
+* item.answer.valueDecimal MS
+* item.answer.valueBoolean MS
+* item.answer.valueDate MS
+* item.answer.valueDateTime MS
+* item.answer.valueQuantity MS
 
 // ----------------------------------------------------------------------------
 // Publication metadata -------------------------------------------------------
