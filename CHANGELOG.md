@@ -5,6 +5,14 @@ All notable changes to the WellData FHIR profiles will be documented in this fil
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2025-12-03
+
+### Changed
+- **WellDataObservation**: Extended `value[x]` to support additional data types:
+  - `dateTime`, `string`
+  - Previously only `CodeableConcept` and `Quantity` were allowed
+- **Documentation**: Updated RDF example in dynamic-data.md to show all supported value types
+
 ## [0.1.1] - 2025-11-28
 
 ### Added

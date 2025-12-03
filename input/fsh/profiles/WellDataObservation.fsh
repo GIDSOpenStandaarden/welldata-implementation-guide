@@ -37,7 +37,7 @@ Description: "Observation used in the WellData project to record observation fro
 * effectiveDateTime 1..1 MS
 
 // --- Value choices -----------------------------------------------------------
-* value[x] only CodeableConcept or Quantity
+* value[x] only CodeableConcept or Quantity or dateTime or string
 
 * valueCodeableConcept 0..1 MS
 * valueCodeableConcept.coding.system 1..1
@@ -47,6 +47,9 @@ Description: "Observation used in the WellData project to record observation fro
 * valueQuantity 0..1 MS
 * valueQuantity.value 1..1
 * valueQuantity.unit 1..1
+
+* valueDateTime 0..1 MS
+* valueString 0..1 MS
 
 // --- Metadata for publication ------------------------------------------------
 * ^publisher = "WellData Consortium"

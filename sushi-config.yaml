@@ -10,7 +10,7 @@ name: welldata-implementation-guide
 title: WellData Implementation Guide
 # description: Example Implementation Guide for getting started with SUSHI
 status: draft # draft | active | retired | unknown
-version: 0.1.1
+version: 0.1.2
 fhirVersion: 4.0.1
 FSHOnly: false
 applyExtensionMetadataToRoot: false
