@@ -126,13 +126,17 @@ Find a mock observation RDF below, it contains different types of fhir:value obj
       fhir:coding ( [ # Example coding value, "A little of time"
         fhir:code    [ fhir:v "91621-3" ] ;
         fhir:system  [ fhir:v "https://loinc.org/LA14732-4"^^xsd:anyURI ] ;
-        fhir:display [ fhir:v "{{value}}" ]
+        fhir:display [ fhir:v "A little of time" ]
       ] )
     ] . # Value can be of different types, only one value is allowed
     fhir:value [ # Cardinality 0..1.
       a fhir:dateTime ; # Example dateTime value, e.g. a birthDate.
       fhir:v "1990-10-05T08:28:56.623Z"^^xsd:dateTime
-    ] .
+    ] . # Value can be of different types, only one value is allowed
+    fhir:value [ # Cardinality 0..1.
+      a fhir:string ; # Example string value.
+      fhir:v "Often"^^xsd:string
+    ] . # Value can be of different types, only one value is allowed
 ```
 
 ### QuestionnaireResponse
