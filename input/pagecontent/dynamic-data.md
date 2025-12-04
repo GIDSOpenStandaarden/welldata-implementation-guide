@@ -29,6 +29,8 @@ Observations are stored in the pod at the following location as a [FHIR resource
 
 `<user pod>/weare/https%3A%2F%2Fwww.hl7.org%2Ffhir%2FObservation/<uuid>.ttl`
 
+Each observation should be stored in its individual resource with a unique uuid as shown above.
+
 Observations can contain all measured values about a patient. In our project we cover the following observations with the according SNOMED-CT or Loinc codes:
 
 | Name | Description | CODE | Intake vragenlijst | GGDM | Zipster | Selfcare |
@@ -57,18 +59,18 @@ Observations can contain all measured values about a patient. In our project we 
 
 More information can be found in the sharepoint excel: [Appendix 3. Alignering basis-set met parameters in project applicaties](https://vitoresearch.sharepoint.com/:x:/r/sites/21309-mydata4ourhealth2/Shared%20Documents/General/01%20Werkpakketten/WP3/A.3.1/Deliverables%2031-05-2025/Appendix%203.%20Alignering%20basis-set%20met%20parameters%20in%20project%20applicaties.xlsx?d=w12efbd9a8b924a709fa4dca1e92a1b84&csf=1&web=1&e=gslaTs)
 
-
-
-
-Find a mock observation RDF below, it contains different types of fhir:value objects for tutorial purposes. Use only one fhir:value per observation in practice.
+An example of an observation using a quantity type value can be find below.
+Please find other kinds of observations here: [Artifacts Summary - WellData Implementation Guide v0.1.1](https://gidsopenstandaarden.github.io/welldata-implementation-guide/artifacts.html).
 
 ```
 # Use your pod root below.
 @base <https://storage.sandbox-pod.datanutsbedrijf.be/a96561f7-3b6a-4631-9e6e-ad19f47e0f81/weare/http%3A%2F%2Fhl7.org%2Ffhir%2FObservation/84cc49e7-b022-4c6c-8122-f7d14e2bc658> .
+@prefix pod-patient-folder: <https://storage.sandbox-pod.datanutsbedrijf.be/a96561f7-3b6a-4631-9e6e-ad19f47e0f81/weare/http%3A%2F%2Fhl7.org%2Ffhir%2FPatient/> .
+@prefix pod-questionnaire-response-folder: <https://storage.sandbox-pod.datanutsbedrijf.be/a96561f7-3b6a-4631-9e6e-ad19f47e0f81/weare/http%3A%2F%2Fhl7.org%2Ffhir%2FQuestionnaireResponse/> .
 @prefix fhir: <http://hl7.org/fhir/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-# Mock observation with different fhir:value types.
+
 <> a fhir:Observation ;
     fhir:text [ fhir:v "Observatie - Total Cholesterol" ] ;
     fhir:issued [
@@ -91,7 +93,7 @@ Find a mock observation RDF below, it contains different types of fhir:value obj
           a fhir:Coding ; # Data type here is optional
           fhir:system [ fhir:v "http://snomed.info/sct" ] ;
           fhir:code [ fhir:v "77068002" ] ;
-          fhir:display [ fhir:v "Total Cholesterol" ] .
+          fhir:display [ fhir:v "Total Cholesterol" ]
         ] )
     ] ;
     fhir:category ( [
@@ -102,41 +104,47 @@ Find a mock observation RDF below, it contains different types of fhir:value obj
         fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/observation-category"^^xsd:anyURI ]
       ] )
     ] ) ;
-    fhir:subject ( [
-      fhir:link <https://storage.sandbox-pod.datanutsbedrijf.be/a96561f7-3b6a-4631-9e6e-ad19f47e0f81/weare/http%3A%2F%2Fhl7.org%2Ffhir%2FPatient/2917eab8-bf6a-416d-8890-0fb0f22b15c0> ;
-      fhir:reference [ fhir:v "https://storage.sandbox-pod.datanutsbedrijf.be/a96561f7-3b6a-4631-9e6e-ad19f47e0f81/weare/http%3A%2F%2Fhl7.org%2Ffhir%2FPatient/2917eab8-bf6a-416d-8890-0fb0f22b15c0"^^xsd:string ] ;
+    fhir:subject [
+      fhir:link pod-patient-folder:2917eab8-bf6a-416d-8890-0fb0f22b15c0 ;
+      fhir:reference [ fhir:v "Patient/2917eab8-bf6a-416d-8890-0fb0f22b15c0"^^xsd:string ] ;
       fhir:type      [ fhir:v "Patient"^^xsd:anyURI ]
-    ] ) ;
+    ] ;
     fhir:performer ( [
-      fhir:link <https://storage.sandbox-pod.datanutsbedrijf.be/a96561f7-3b6a-4631-9e6e-ad19f47e0f81/weare/http%3A%2F%2Fhl7.org%2Ffhir%2FPatient/2917eab8-bf6a-416d-8890-0fb0f22b15c0> ;
-      fhir:reference [ fhir:v "https://storage.sandbox-pod.datanutsbedrijf.be/a96561f7-3b6a-4631-9e6e-ad19f47e0f81/weare/http%3A%2F%2Fhl7.org%2Ffhir%2FPatient/2917eab8-bf6a-416d-8890-0fb0f22b15c0"^^xsd:string ] ;
+      fhir:link pod-patient-folder:2917eab8-bf6a-416d-8890-0fb0f22b15c0 ;
+      fhir:reference [ fhir:v "Patient/2917eab8-bf6a-416d-8890-0fb0f22b15c0"^^xsd:string ] ;
       fhir:type      [ fhir:v "Patient"^^xsd:anyURI ]
     ] ) ;
     fhir:derivedFrom ( [
-      fhir:link <https://storage.sandbox-pod.datanutsbedrijf.be/a96561f7-3b6a-4631-9e6e-ad19f47e0f81/weare/http%3A%2F%2Fhl7.org%2Ffhir%2FQuestionnaireResponse/c75cc7d1-7c42-46f4-a425-e40cdaf8dae2> ;
-      fhir:reference [ fhir:v "https://storage.sandbox-pod.datanutsbedrijf.be/a96561f7-3b6a-4631-9e6e-ad19f47e0f81/weare/http%3A%2F%2Fhl7.org%2Ffhir%2FQuestionnaireResponse/c75cc7d1-7c42-46f4-a425-e40cdaf8dae2"^^xsd:string ] ;
+      fhir:link pod-questionnaire-response-folder:c75cc7d1-7c42-46f4-a425-e40cdaf8dae2 ;
+      fhir:reference [ fhir:v "QuestionnaireResponse/c75cc7d1-7c42-46f4-a425-e40cdaf8dae2"^^xsd:string ] ;
       fhir:type      [ fhir:v "QuestionnaireResponse"^^xsd:anyURI ]
     ] ) ;
-    fhir:value [ # Cardinality 0..1.
-        a fhir:Quantity ; # Example Quantity value.
+    # Example Quantity value.
+    fhir:value [
+        a fhir:Quantity ;
         fhir:value [ fhir:v "190"^^xsd:decimal ] ;
         fhir:unit [ fhir:v "mg/dL" ] # Example unit, unit not mandatory when code from terminology does not require it.
-    ] . # Value can be of different types, only one value is allowed
-    fhir:value [ # Cardinality 0..1.
-      fhir:coding ( [ # Example coding value, "A little of time"
-        fhir:code    [ fhir:v "91621-3" ] ;
-        fhir:system  [ fhir:v "https://loinc.org/LA14732-4"^^xsd:anyURI ] ;
-        fhir:display [ fhir:v "A little of time" ]
-      ] )
-    ] . # Value can be of different types, only one value is allowed
-    fhir:value [ # Cardinality 0..1.
-      a fhir:dateTime ; # Example dateTime value, e.g. a birthDate.
-      fhir:v "1990-10-05T08:28:56.623Z"^^xsd:dateTime
-    ] . # Value can be of different types, only one value is allowed
-    fhir:value [ # Cardinality 0..1.
-      a fhir:string ; # Example string value.
-      fhir:v "Often"^^xsd:string
-    ] . # Value can be of different types, only one value is allowed
+    ] .
+    # Value can be of different types, only one value is allowed
+    # Example coding value, "A little of time"
+    # fhir:value [
+    #   a fhir:CodeableConcept ;
+    #   fhir:coding ( [
+    #     fhir:code    [ fhir:v "91621-3" ] ;
+    #     fhir:system  [ fhir:v "https://loinc.org/LA14732-4"^^xsd:anyURI ] ;
+    #     fhir:display [ fhir:v "A little of time" ]
+    #   ] )
+    # ] . # Value can be of different types, only one value is allowed
+    # Example dateTime value, e.g. a birthDate.
+    # fhir:value [
+    #   a fhir:dateTime ;
+    #   fhir:v "1990-10-05T08:28:56.623Z"^^xsd:dateTime
+    # ] . # Value can be of different types, only one value is allowed
+    # Example string value.
+    # fhir:value [
+    #   a fhir:string ;
+    #   fhir:v "Often"^^xsd:string
+    # ] . # Value can be of different types, only one value is allowed
 ```
 
 ### QuestionnaireResponse
