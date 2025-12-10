@@ -44,8 +44,8 @@ Observations can contain all measured values about a patient. In our project we 
 | cholesterol_hdl | HDL cholesterol | 02737005 (Snomed) |  | x |  | x |
 | cholesterol_ratio	| Totaal / HDL cholesterol | 313811003 (Snomed) |  | x |  | x |
 | stress | Stress ervaring | 68011-6 (Loinc) | x | | x | |
-| daily_life | Dagelijks leven | 91621-3 (Loinc) | x | |  | x |
-| social_contact | Voldoening uit sociale contacten | 61581-5 (Loinc) | x | | x | x |
+| daily_life | Dagelijks leven | 91621-3 (Loinc) | x | |  |  |
+| social_contact | Voldoening uit sociale contacten | 61581-5 (Loinc) | x | | x |  |
 | physical_exercise | beweegminuten | 228450008 (Snomed) | x | x | | x |
 | smoking | roken (ja/nee) | 63638-1	(Loinc) & 77176002 (Snomed) | x | x | | |
 | smoking_cigarettes | Hoeveel sigaretten per dag roken | 63640-7	(Loinc) | x | x | | |
