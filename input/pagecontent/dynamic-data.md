@@ -14,7 +14,7 @@ All information in Welldata will be placed under the following root container of
 
 Information about the patient that fits in the FHIR resource [patient](https://www.hl7.org/fhir/patient.html) must be stored at the following location:
 
-`<user pod>/weare/https%3A%2F%2Fwww.hl7.org%2Ffhir%2FPatient/<uuid>.ttl`
+`<user pod>/weare/http%3A%2F%2Fwww.hl7.org%2Ffhir%2FPatient/<uuid>.ttl`
 
 Information that will be stored in the resource:
 - Gender
@@ -27,7 +27,7 @@ Information that will be stored in the resource:
 ### Observation
 Observations are stored in the pod at the following location as a [FHIR resource](https://www.hl7.org/fhir/observation.html)
 
-`<user pod>/weare/https%3A%2F%2Fwww.hl7.org%2Ffhir%2FObservation/<uuid>.ttl`
+`<user pod>/weare/http%3A%2F%2Fwww.hl7.org%2Ffhir%2FObservation/<uuid>.ttl`
 
 Each observation should be stored in its individual resource with a unique uuid as shown above.
 
@@ -152,4 +152,4 @@ Please find other kinds of observations here: [Artifacts Summary - WellData Impl
 
 A resource of the type QuestionnaireResponse is stored as a [FHIR resource](https://www.hl7.org/fhir/questionnaireresponse.html) at the following location in the users's pod:
 
-`<user pod>/weare/https%3A%2F%2Fwww.hl7.org%2Ffhir%2FQuestionnaireResponse/<uuid>.ttl`
+`<user pod>/weare/http%3A%2F%2Fwww.hl7.org%2Ffhir%2FQuestionnaireResponse/<uuid>.ttl`
