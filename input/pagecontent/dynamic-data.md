@@ -14,7 +14,7 @@ All information in Welldata will be placed under the following root container of
 
 Information about the patient that fits in the FHIR resource [patient](https://www.hl7.org/fhir/patient.html) must be stored at the following location:
 
-`<user pod>/weare/https%3A%2F%2Fwww.hl7.org%2Ffhir%2FPatient/<uuid>.ttl`
+`<user pod>/weare/http%3A%2F%2Fwww.hl7.org%2Ffhir%2FPatient/<uuid>.ttl`
 
 Information that will be stored in the resource:
 - Gender
@@ -27,7 +27,7 @@ Information that will be stored in the resource:
 ### Observation
 Observations are stored in the pod at the following location as a [FHIR resource](https://www.hl7.org/fhir/observation.html)
 
-`<user pod>/weare/https%3A%2F%2Fwww.hl7.org%2Ffhir%2FObservation/<uuid>.ttl`
+`<user pod>/weare/http%3A%2F%2Fwww.hl7.org%2Ffhir%2FObservation/<uuid>.ttl`
 
 Each observation should be stored in its individual resource with a unique uuid as shown above.
 
@@ -44,8 +44,8 @@ Observations can contain all measured values about a patient. In our project we 
 | cholesterol_hdl | HDL cholesterol | 02737005 (Snomed) |  | x |  | x |
 | cholesterol_ratio	| Totaal / HDL cholesterol | 313811003 (Snomed) |  | x |  | x |
 | stress | Stress ervaring | 68011-6 (Loinc) | x | | x | |
-| daily_life | Dagelijks leven | 91621-3 (Loinc) | x | |  | x |
-| social_contact | Voldoening uit sociale contacten | 61581-5 (Loinc) | x | | x | x |
+| daily_life | Dagelijks leven | 91621-3 (Loinc) | x | |  |  |
+| social_contact | Voldoening uit sociale contacten | 61581-5 (Loinc) | x | | x |  |
 | physical_exercise | beweegminuten | 228450008 (Snomed) | x | x | | x |
 | smoking | roken (ja/nee) | 63638-1	(Loinc) & 77176002 (Snomed) | x | x | | |
 | smoking_cigarettes | Hoeveel sigaretten per dag roken | 63640-7	(Loinc) | x | x | | |
@@ -56,6 +56,7 @@ Observations can contain all measured values about a patient. In our project we 
 | birthdate | geboortedatum (dd/mm/yyyy) | 184099003 (Snomed) | x | x | x | |
 | postcode | postcode | 184099003 (Snomed) | x | x | x | |
 | work | werksituatie | / | x | | x | |
+| sex | geslacht | 184100006 (Snomed) | | x | | x |
 
 More information can be found in the sharepoint excel: [Appendix 3. Alignering basis-set met parameters in project applicaties](https://vitoresearch.sharepoint.com/:x:/r/sites/21309-mydata4ourhealth2/Shared%20Documents/General/01%20Werkpakketten/WP3/A.3.1/Deliverables%2031-05-2025/Appendix%203.%20Alignering%20basis-set%20met%20parameters%20in%20project%20applicaties.xlsx?d=w12efbd9a8b924a709fa4dca1e92a1b84&csf=1&web=1&e=gslaTs)
 
@@ -151,4 +152,4 @@ Please find other kinds of observations here: [Artifacts Summary - WellData Impl
 
 A resource of the type QuestionnaireResponse is stored as a [FHIR resource](https://www.hl7.org/fhir/questionnaireresponse.html) at the following location in the users's pod:
 
-`<user pod>/weare/https%3A%2F%2Fwww.hl7.org%2Ffhir%2FQuestionnaireResponse/<uuid>.ttl`
+`<user pod>/weare/http%3A%2F%2Fwww.hl7.org%2Ffhir%2FQuestionnaireResponse/<uuid>.ttl`
