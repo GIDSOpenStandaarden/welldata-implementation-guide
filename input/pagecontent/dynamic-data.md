@@ -9,6 +9,9 @@ All information in Welldata will be placed under the following root container of
 
 `<user pod>/weare/`
 
+<img width="2489" height="1521" alt="Data hergebruik in WellData drawio" src="https://github.com/user-attachments/assets/4f634729-cf5b-401a-8b68-e4a6b6062ad2" />
+
+
 
 ### Patient
 
