@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 310" width="840" height="310" role="img" aria-label="Van harde schijf naar persoonlijke gegevenskluis: nu zoekt elke app zelf in de bestanden in de pod, straks is er één voordeur en houdt de burger de sleutel">
+<title>Van harde schijf naar persoonlijke gegevenskluis: nu zoekt elke app zelf in de bestanden in de pod, straks is er één voordeur en houdt de burger de sleutel</title>
+<style>
+svg{font-family:Helvetica,Arial,sans-serif;font-size:13.5px;fill:#212529}
+.t{font-size:15px;font-weight:700}
+.s{font-size:12px;fill:#495057}
+.e{font-size:11px;font-weight:700;letter-spacing:1.3px;fill:#868e96}
+.b{font-weight:700}
+.m{font-family:Menlo,Consolas,'Courier New',monospace;font-size:11.5px}
+.c{text-anchor:middle}
+.r{text-anchor:end}
+.cw{fill:#fff}
+.cb{fill:#1864ab}
+.cg{fill:#2b8a3e}
+.cv{fill:#5f3dc4}
+.ca{fill:#d9480f}
+.cr{fill:#c92a2a}
+.cm{fill:#868e96}
+.ic{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ln{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<defs>
+<symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
+<symbol id="i-app" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L20 3M16.5 6.5l3 3M13.5 9.5l2.5 2.5"/></symbol>
+<symbol id="i-file" viewBox="0 0 16 22"><path d="M0.8 0.8h9.7l4.7 4.7v15.7H0.8z"/><path d="M10.5 0.8v4.7h4.7" fill="none"/></symbol>
+</defs>
+<rect width="840" height="310" rx="12" fill="#fff"/>
+<!-- links: nu -->
+<rect x="16" y="16" width="372" height="278" rx="14" fill="#f8f9fa" stroke="#dee2e6"/>
+<text x="36" y="46" class="e">NU</text>
+<text x="36" y="68" class="t">De pod als harde schijf</text>
+<text x="60" y="94" class="s c">apps</text>
+<text x="282" y="94" class="s c">bestanden in de pod</text>
+<g fill="#fff9db" stroke="#f08c00" stroke-width="1.5">
+<rect x="40" y="104" width="40" height="40" rx="10"/>
+<rect x="40" y="156" width="40" height="40" rx="10"/>
+<rect x="40" y="208" width="40" height="40" rx="10"/>
+</g>
+<g class="ic" stroke="#d9480f">
+<use href="#i-app" x="49" y="113" width="22" height="22"/>
+<use href="#i-app" x="49" y="165" width="22" height="22"/>
+<use href="#i-app" x="49" y="217" width="22" height="22"/>
+</g>
+<rect x="196" y="102" width="172" height="156" rx="12" fill="#fff" stroke="#7048e8" stroke-width="1.5"/>
+<g fill="#f3f0ff" stroke="#b197fc" stroke-width="1.2" stroke-linejoin="round">
+<use href="#i-file" x="210" y="112" width="16" height="22"/><use href="#i-file" x="241" y="112" width="16" height="22"/><use href="#i-file" x="272" y="112" width="16" height="22"/><use href="#i-file" x="303" y="112" width="16" height="22"/><use href="#i-file" x="334" y="112" width="16" height="22"/>
+<use href="#i-file" x="210" y="147" width="16" height="22"/><use href="#i-file" x="241" y="147" width="16" height="22"/><use href="#i-file" x="272" y="147" width="16" height="22"/><use href="#i-file" x="303" y="147" width="16" height="22"/><use href="#i-file" x="334" y="147" width="16" height="22"/>
+<use href="#i-file" x="210" y="182" width="16" height="22"/><use href="#i-file" x="241" y="182" width="16" height="22"/><use href="#i-file" x="272" y="182" width="16" height="22"/><use href="#i-file" x="303" y="182" width="16" height="22"/><use href="#i-file" x="334" y="182" width="16" height="22"/>
+<use href="#i-file" x="210" y="217" width="16" height="22"/><use href="#i-file" x="241" y="217" width="16" height="22"/><use href="#i-file" x="272" y="217" width="16" height="22"/><use href="#i-file" x="303" y="217" width="16" height="22"/><use href="#i-file" x="334" y="217" width="16" height="22"/>
+</g>
+<g fill="#fff3bf" stroke="#f08c00" stroke-width="1.2" stroke-linejoin="round">
+<use href="#i-file" x="303" y="147" width="16" height="22"/><use href="#i-file" x="210" y="217" width="16" height="22"/><use href="#i-file" x="334" y="112" width="16" height="22"/><use href="#i-file" x="272" y="217" width="16" height="22"/><use href="#i-file" x="241" y="112" width="16" height="22"/><use href="#i-file" x="334" y="182" width="16" height="22"/>
+</g>
+<g class="ln" stroke="#f08c00" stroke-width="1.5">
+<path d="M80 124L311 158"/><path d="M80 124L218 228"/>
+<path d="M80 176L342 123"/><path d="M80 176L280 228"/>
+<path d="M80 228L249 123"/><path d="M80 228L342 193"/>
+</g>
+<g fill="#f08c00">
+<circle cx="311" cy="158" r="3.5"/><circle cx="218" cy="228" r="3.5"/><circle cx="342" cy="123" r="3.5"/><circle cx="280" cy="228" r="3.5"/><circle cx="249" cy="123" r="3.5"/><circle cx="342" cy="193" r="3.5"/>
+</g>
+<text x="36" y="280" class="s">Elke app zoekt zelf in de bestanden</text>
+<!-- pijl -->
+<path d="M400 155H430" class="ln" stroke="#495057" stroke-width="3.5"/>
+<path d="M444 155L428 146V164z" fill="#495057"/>
+<!-- rechts: straks -->
+<rect x="452" y="16" width="372" height="278" rx="14" fill="#f4fbf5" stroke="#b2f2bb"/>
+<text x="472" y="46" class="e">STRAKS</text>
+<text x="472" y="68" class="t">Een persoonlijke gegevenskluis</text>
+<text x="496" y="94" class="s c">apps</text>
+<g fill="#fff9db" stroke="#f08c00" stroke-width="1.5">
+<rect x="476" y="104" width="40" height="40" rx="10"/>
+<rect x="476" y="156" width="40" height="40" rx="10"/>
+<rect x="476" y="208" width="40" height="40" rx="10"/>
+</g>
+<g class="ic" stroke="#d9480f">
+<use href="#i-app" x="485" y="113" width="22" height="22"/>
+<use href="#i-app" x="485" y="165" width="22" height="22"/>
+<use href="#i-app" x="485" y="217" width="22" height="22"/>
+</g>
+<g class="ln" stroke="#f08c00" stroke-width="1.5">
+<path d="M516 124C548 124 548 176 578 176"/><path d="M516 176H578"/><path d="M516 228C548 228 548 176 578 176"/>
+</g>
+<!-- kluis -->
+<rect x="668" y="254" width="24" height="8" rx="2" fill="#343a40"/><rect x="758" y="254" width="24" height="8" rx="2" fill="#343a40"/>
+<rect x="797" y="126" width="9" height="22" rx="2" fill="#343a40"/><rect x="797" y="206" width="9" height="22" rx="2" fill="#343a40"/>
+<rect x="650" y="102" width="150" height="152" rx="16" fill="#fff" stroke="#343a40" stroke-width="3"/>
+<rect x="663" y="115" width="124" height="126" rx="8" fill="#f8f9fa" stroke="#ced4da" stroke-width="1.5"/>
+<g class="ln" stroke="#343a40" stroke-width="2.6">
+<path d="M725 143V213M690 178H760"/>
+</g>
+<circle cx="725" cy="178" r="26" fill="#fff" stroke="#343a40" stroke-width="2.6"/>
+<g class="ln" stroke="#343a40" stroke-width="2.6"><path d="M725 152V204M699 178H751"/></g>
+<circle cx="725" cy="178" r="6" fill="#343a40"/>
+<g fill="#343a40"><circle cx="725" cy="141" r="3.6"/><circle cx="725" cy="215" r="3.6"/><circle cx="688" cy="178" r="3.6"/><circle cx="762" cy="178" r="3.6"/></g>
+<!-- voordeur -->
+<rect x="578" y="161" width="78" height="30" rx="15" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="617" y="180.5" class="s b c cg">FHIR API</text>
+<!-- burger met sleutel -->
+<rect x="730" y="84" width="76" height="34" rx="17" fill="#e7f5ff" stroke="#1971c2" stroke-width="1.5"/>
+<g class="ic" stroke="#1971c2"><use href="#i-person" x="740" y="90" width="22" height="22"/><use href="#i-key" x="772" y="90" width="22" height="22"/></g>
+<text x="472" y="280" class="s">Eén voordeur, en de burger houdt de sleutel</text>
+</svg>

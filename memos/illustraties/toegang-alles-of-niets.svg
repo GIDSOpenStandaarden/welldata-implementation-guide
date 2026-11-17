@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 306" width="840" height="306" role="img" aria-label="Toegang in de pod is alles of niets: de coach-app wil alleen de slaapscore, maar toegang tot de container geeft ook hartslag en gewicht">
+<title>Toegang in de pod is alles of niets: de coach-app wil alleen de slaapscore, maar toegang tot de container geeft ook hartslag en gewicht</title>
+<style>
+svg{font-family:Helvetica,Arial,sans-serif;font-size:13.5px;fill:#212529}
+.t{font-size:15px;font-weight:700}
+.s{font-size:12px;fill:#495057}
+.e{font-size:11px;font-weight:700;letter-spacing:1.3px;fill:#868e96}
+.b{font-weight:700}
+.m{font-family:Menlo,Consolas,'Courier New',monospace;font-size:11.5px}
+.c{text-anchor:middle}
+.r{text-anchor:end}
+.cw{fill:#fff}
+.cb{fill:#1864ab}
+.cg{fill:#2b8a3e}
+.cv{fill:#5f3dc4}
+.ca{fill:#d9480f}
+.cr{fill:#c92a2a}
+.cm{fill:#868e96}
+.ic{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ln{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="a-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.8L9.5 5L0 9.2z" fill="#2f9e44"/></marker>
+<marker id="a-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.8L9.5 5L0 9.2z" fill="#e03131"/></marker>
+<symbol id="i-app" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><path d="M2 7a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></symbol>
+<symbol id="i-scale" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><path d="M8 9.5a5.5 5.5 0 0 1 8 0M12 12l1.6-3.2"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.2A8.3 8.3 0 1 1 9.8 4a6.6 6.6 0 0 0 10.2 10.2z"/></symbol>
+<symbol id="i-file" viewBox="0 0 16 22"><path d="M0.8 0.8h9.7l4.7 4.7v15.7H0.8z"/><path d="M10.5 0.8v4.7h4.7" fill="none"/></symbol>
+</defs>
+<rect width="840" height="306" rx="12" fill="#fff"/>
+<!-- pod -->
+<rect x="16" y="16" width="296" height="232" rx="14" fill="#f3f0ff" stroke="#7048e8" stroke-width="1.5"/>
+<use href="#i-folder" x="30" y="28" width="26" height="26" class="ic" stroke="#7048e8"/>
+<text x="66" y="42" class="t">Container Observation/</text>
+<text x="66" y="59" class="s">in de pod van de burger</text>
+<g fill="#fff" stroke="#d0bfff" stroke-width="1.3">
+<rect x="30" y="78" width="268" height="44" rx="10"/><rect x="30" y="130" width="268" height="44" rx="10"/><rect x="30" y="182" width="268" height="44" rx="10"/>
+</g>
+<g class="ic" stroke="#5f3dc4">
+<use href="#i-heart" x="40" y="88" width="24" height="24"/><use href="#i-scale" x="40" y="140" width="24" height="24"/><use href="#i-moon" x="40" y="192" width="24" height="24"/>
+</g>
+<text x="76" y="105">Hartslag</text><text x="76" y="157">Gewicht</text><text x="76" y="209">Slaapscore</text>
+<g fill="#f3f0ff" stroke="#9775fa" stroke-width="1.2" stroke-linejoin="round">
+<use href="#i-file" x="228" y="89" width="16" height="22"/><use href="#i-file" x="248" y="89" width="16" height="22"/><use href="#i-file" x="268" y="89" width="16" height="22"/>
+<use href="#i-file" x="228" y="141" width="16" height="22"/><use href="#i-file" x="248" y="141" width="16" height="22"/><use href="#i-file" x="268" y="141" width="16" height="22"/>
+<use href="#i-file" x="228" y="193" width="16" height="22"/><use href="#i-file" x="248" y="193" width="16" height="22"/><use href="#i-file" x="268" y="193" width="16" height="22"/>
+</g>
+<!-- toegang -->
+<text x="420" y="42" class="t c">Toegang tot de container</text>
+<text x="420" y="59" class="s c">is toegang tot alles</text>
+<g class="ln" stroke-width="2">
+<path d="M320 100H520" stroke="#e03131" marker-end="url(#a-red)"/>
+<path d="M320 152H520" stroke="#e03131" marker-end="url(#a-red)"/>
+<path d="M320 204H520" stroke="#2f9e44" marker-end="url(#a-green)"/>
+</g>
+<!-- app -->
+<rect x="528" y="16" width="296" height="232" rx="14" fill="#fff9db" stroke="#f08c00" stroke-width="1.5"/>
+<use href="#i-app" x="542" y="28" width="26" height="26" class="ic" stroke="#d9480f"/>
+<text x="578" y="42" class="t">Coach-app</text>
+<text x="578" y="59" class="s">wil alleen de slaapscore zien</text>
+<g stroke-width="1.3">
+<rect x="542" y="78" width="268" height="44" rx="10" fill="#fff5f5" stroke="#ffa8a8"/><rect x="542" y="130" width="268" height="44" rx="10" fill="#fff5f5" stroke="#ffa8a8"/><rect x="542" y="182" width="268" height="44" rx="10" fill="#ebfbee" stroke="#8ce99a"/>
+</g>
+<g class="ic">
+<use href="#i-heart" x="552" y="88" width="24" height="24" stroke="#e03131"/><use href="#i-scale" x="552" y="140" width="24" height="24" stroke="#e03131"/><use href="#i-moon" x="552" y="192" width="24" height="24" stroke="#2f9e44"/>
+</g>
+<text x="588" y="105">Hartslag</text><text x="588" y="157">Gewicht</text><text x="588" y="209">Slaapscore</text>
+<text x="798" y="104.5" class="s r cr">onbedoeld gedeeld</text><text x="798" y="156.5" class="s r cr">onbedoeld gedeeld</text><text x="798" y="208.5" class="s r cg">gewenst</text>
+<!-- noot -->
+<text x="420" y="282" class="s c">Toegang per bestand kan ook, maar geldt niet voor nieuwe metingen en vraagt dat de app de bestanden al kent.</text>
+</svg>

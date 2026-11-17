@@ -7,3 +7,9 @@ input-cache/
 root/
 template/
 .idea/
+
+# Internal project document summaries (not for the public repo)
+documenten/
+
+# Gegenereerde PDF-export van de memo
+memos/export/

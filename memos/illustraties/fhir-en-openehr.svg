@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 400" width="840" height="400" role="img" aria-label="Eén gewichtsmeting in FHIR en in openEHR: de code kiest het archetype, waarde en tijdstip passen één op één, de persoon volgt uit het dossier, id en status hebben geen plek in het archetype">
+<title>Eén gewichtsmeting in FHIR en in openEHR: de code kiest het archetype, waarde en tijdstip passen één op één, de persoon volgt uit het dossier, id en status hebben geen plek in het archetype</title>
+<style>
+svg{font-family:Helvetica,Arial,sans-serif;font-size:13.5px;fill:#212529}
+.t{font-size:15px;font-weight:700}
+.s{font-size:12px;fill:#495057}
+.e{font-size:11px;font-weight:700;letter-spacing:1.3px;fill:#868e96}
+.b{font-weight:700}
+.m{font-family:Menlo,Consolas,'Courier New',monospace;font-size:11.5px}
+.c{text-anchor:middle}
+.r{text-anchor:end}
+.cw{fill:#fff}
+.cb{fill:#1864ab}
+.cg{fill:#2b8a3e}
+.cv{fill:#5f3dc4}
+.ca{fill:#d9480f}
+.cr{fill:#c92a2a}
+.cm{fill:#868e96}
+.ic{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ln{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<rect width="840" height="400" rx="12" fill="#fff"/>
+<!-- FHIR -->
+<rect x="16" y="16" width="330" height="312" rx="14" fill="#f8f9fa" stroke="#dee2e6"/>
+<text x="36" y="46" class="e">FHIR</text>
+<text x="36" y="68" class="t">Eén Observation</text>
+<text x="36" y="86" class="s">Een losse resource met een eigen id</text>
+<g fill="#ebfbee" stroke="#8ce99a" stroke-width="1.2">
+<rect x="36" y="104" width="290" height="30" rx="8"/><rect x="36" y="140" width="290" height="30" rx="8"/><rect x="36" y="176" width="290" height="30" rx="8"/><rect x="36" y="212" width="290" height="30" rx="8"/>
+</g>
+<g fill="#fff4e6" stroke="#ffc078" stroke-width="1.2">
+<rect x="36" y="248" width="290" height="30" rx="8"/><rect x="36" y="284" width="290" height="30" rx="8"/>
+</g>
+<g class="m">
+<text x="48" y="123">subject</text><text x="48" y="159">code</text><text x="48" y="195">effectiveDateTime</text><text x="48" y="231">valueQuantity</text><text x="48" y="267">id</text><text x="48" y="303">status</text>
+</g>
+<g class="s">
+<text x="180" y="123">Patient/…</text><text x="180" y="159">27113001 (gewicht)</text><text x="180" y="195">10 juni 2025, 09:00</text><text x="180" y="231">70 kg</text><text x="180" y="267">Observation/123</text><text x="180" y="303">final</text>
+</g>
+<!-- openEHR -->
+<rect x="494" y="16" width="330" height="312" rx="14" fill="#f8f9fa" stroke="#dee2e6"/>
+<text x="514" y="46" class="e">OPENEHR</text>
+<text x="514" y="68" class="t">Eén entry in een compositie</text>
+<text x="514" y="86" class="s">Eén dossier per persoon, opslag per compositie</text>
+<rect x="514" y="100" width="290" height="214" rx="10" fill="#fff" stroke="#7048e8" stroke-width="1.5"/>
+<text x="526" y="120" class="s b cv">EHR: het dossier van de burger</text>
+<rect x="526" y="130" width="266" height="172" rx="9" fill="#f3f0ff" stroke="#b197fc" stroke-width="1.2"/>
+<text x="538" y="150" class="s b cv">Compositie (volgens een template)</text>
+<rect x="538" y="160" width="242" height="130" rx="8" fill="#fff" stroke="#7048e8" stroke-width="1.5"/>
+<text x="550" y="180" class="s b">OBSERVATION</text>
+<text x="550" y="196" class="m">body_weight.v2</text><text x="655" y="196" class="s">(archetype)</text>
+<g fill="#f3f0ff" stroke="#b197fc" stroke-width="1.2">
+<rect x="550" y="206" width="218" height="30" rx="8"/><rect x="550" y="246" width="218" height="30" rx="8"/>
+</g>
+<text x="562" y="225" class="m">events[at0003]/time</text>
+<text x="562" y="265" class="m">items[at0004]</text><text x="662" y="265" class="s">Weight: 70 kg</text>
+<!-- koppelingen -->
+<g class="ln" stroke="#7048e8">
+<path d="M326 119H514"/>
+<path d="M326 155C420 155 440 178 538 178"/>
+<path d="M326 191C430 191 450 221 550 221"/>
+<path d="M326 227C430 227 450 261 550 261"/>
+</g>
+<g fill="#7048e8">
+<circle cx="326" cy="119" r="3.2"/><circle cx="514" cy="119" r="3.2"/>
+<circle cx="326" cy="155" r="3.2"/><circle cx="538" cy="178" r="3.2"/>
+<circle cx="326" cy="191" r="3.2"/><circle cx="550" cy="221" r="3.2"/>
+<circle cx="326" cy="227" r="3.2"/><circle cx="550" cy="261" r="3.2"/>
+</g>
+<text x="420" y="111" class="s c">het dossier zelf</text>
+<text x="420" y="147" class="s c">kiest het archetype</text>
+<path d="M326 263H352M326 299H352M352 263V299" class="ln" stroke="#f08c00" stroke-dasharray="5 4"/>
+<text x="362" y="279" class="s ca">geen plek in</text><text x="362" y="294" class="s ca">het archetype</text>
+<!-- conclusie -->
+<rect x="16" y="340" width="808" height="44" rx="12" fill="#fff4e6" stroke="#ffc078"/>
+<text x="420" y="366.5" class="c">De code kiest het archetype; waarde en tijdstip passen één op één; id en status vragen een eigen oplossing.</text>
+</svg>

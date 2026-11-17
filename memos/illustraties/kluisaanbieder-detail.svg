@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 536" width="840" height="536" role="img" aria-label="De kluisaanbieder in detail: de autorisatieservice (OpenID Connect) geeft de applicatie een access_token met SMART on FHIR-scopes, de FHIR API dwingt die af, de backend werkt met openEHR en de pod">
+<title>De kluisaanbieder in detail: de autorisatieservice (OpenID Connect) geeft de applicatie een access_token met SMART on FHIR-scopes, de FHIR API dwingt die af, de backend werkt met openEHR en de pod</title>
+<style>
+svg{font-family:Helvetica,Arial,sans-serif;font-size:13.5px;fill:#212529}
+.t{font-size:15px;font-weight:700}
+.s{font-size:12px;fill:#495057}
+.e{font-size:11px;font-weight:700;letter-spacing:1.3px;fill:#868e96}
+.b{font-weight:700}
+.m{font-family:Menlo,Consolas,'Courier New',monospace;font-size:11.5px}
+.c{text-anchor:middle}
+.r{text-anchor:end}
+.cw{fill:#fff}
+.cb{fill:#1864ab}
+.cg{fill:#2b8a3e}
+.cv{fill:#5f3dc4}
+.ca{fill:#d9480f}
+.cr{fill:#c92a2a}
+.cm{fill:#868e96}
+.ic{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ln{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="a-gray" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.8L9.5 5L0 9.2z" fill="#495057"/></marker>
+<marker id="a-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.8L9.5 5L0 9.2z" fill="#f08c00"/></marker>
+<marker id="a-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.8L9.5 5L0 9.2z" fill="#1971c2"/></marker>
+<symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></symbol>
+<symbol id="i-app" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3L20 3M16.5 6.5l3 3M13.5 9.5l2.5 2.5"/></symbol>
+<symbol id="i-door" viewBox="0 0 24 24"><path d="M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17M3 21h18"/><circle cx="14.5" cy="12.5" r="0.9"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+</defs>
+<rect width="840" height="536" rx="12" fill="#fff"/>
+<!-- burger -->
+<rect x="20" y="44" width="190" height="76" rx="12" fill="#e7f5ff" stroke="#1971c2" stroke-width="1.5"/>
+<use href="#i-person" x="32" y="56" width="28" height="28" class="ic" stroke="#1971c2"/>
+<text x="70" y="73" class="t">Burger</text>
+<text x="70" y="91" class="s">DigiD of</text><text x="70" y="106" class="s">GIDS private ID</text>
+<!-- applicatie -->
+<rect x="20" y="262" width="190" height="76" rx="12" fill="#fff9db" stroke="#f08c00" stroke-width="1.5"/>
+<use href="#i-app" x="32" y="274" width="28" height="28" class="ic" stroke="#d9480f"/>
+<text x="70" y="291" class="t">Applicatie</text>
+<text x="70" y="309" class="s">eenvoudige</text><text x="70" y="324" class="s">OpenID Connect-client</text>
+<!-- kluisaanbieder -->
+<rect x="330" y="30" width="490" height="462" rx="18" fill="#fff" stroke="#343a40" stroke-width="2.5"/>
+<rect x="354" y="17" width="308" height="26" rx="13" fill="#343a40"/>
+<text x="508" y="34.5" class="s b c cw">Kluisaanbieder: persoonlijke gegevenskluis</text>
+<!-- a -->
+<rect x="350" y="62" width="450" height="126" rx="12" fill="#e7f5ff" stroke="#1971c2" stroke-width="1.5"/>
+<use href="#i-key" x="363" y="73" width="30" height="30" class="ic" stroke="#1971c2" stroke-width="1.6"/>
+<text x="404" y="87" class="t cb">a) Autorisatiemodel: OpenID Connect</text>
+<text x="404" y="106">De burger logt in en geeft toestemming</text>
+<g fill="#fff" stroke="#74c0fc" stroke-width="1.2">
+<rect x="364" y="120" width="186" height="24" rx="12"/><rect x="558" y="120" width="228" height="24" rx="12"/>
+</g>
+<text x="457" y="136.3" class="s c">kortdurend: access_token</text>
+<text x="672" y="136.3" class="s c">langlopend: ook een refresh_token</text>
+<text x="364" y="171" class="s">Het access_token bevat SMART on FHIR-scopes</text>
+<!-- b -->
+<rect x="350" y="204" width="450" height="154" rx="12" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<use href="#i-door" x="363" y="215" width="30" height="30" class="ic" stroke="#2f9e44" stroke-width="1.6"/>
+<text x="404" y="229" class="t cg">b) FHIR API volgens de WellData IG</text>
+<text x="404" y="248">Externe interface, in lijn met de FAIR-principes</text>
+<text x="364" y="276" class="s">De API dwingt af:</text>
+<g fill="#fff" stroke="#8ce99a" stroke-width="1.2">
+<rect x="364" y="286" width="184" height="24" rx="12"/><rect x="556" y="286" width="76" height="24" rx="12"/><rect x="640" y="286" width="88" height="24" rx="12"/>
+<rect x="364" y="318" width="142" height="24" rx="12"/><rect x="514" y="318" width="126" height="24" rx="12"/><rect x="648" y="318" width="138" height="24" rx="12"/>
+</g>
+<g class="s c">
+<text x="456" y="302.3">scopes: weigeren en filteren</text><text x="594" y="302.3">validatie</text><text x="684" y="302.3">transacties</text>
+<text x="435" y="334.3">metadata en herkomst</text><text x="577" y="334.3">versies (_history)</text><text x="717" y="334.3">audit trail (NEN 7513)</text>
+</g>
+<!-- c -->
+<path d="M575 358V383" class="ln" stroke="#495057" marker-end="url(#a-gray)"/>
+<text x="587" y="376" class="s">leest en schrijft</text>
+<rect x="350" y="388" width="450" height="84" rx="12" fill="#f3f0ff" stroke="#7048e8" stroke-width="1.5"/>
+<use href="#i-db" x="363" y="399" width="30" height="30" class="ic" stroke="#7048e8" stroke-width="1.6"/>
+<text x="404" y="413" class="t cv">c) Backend: openEHR + pod*</text>
+<text x="404" y="432">openEHR als klinisch model achter de API; gegevens</text>
+<text x="404" y="449">en audit trail als bestanden in de pod van de burger</text>
+<!-- pijlen -->
+<path d="M210 82H345" class="ln" stroke="#1971c2" stroke-width="2" marker-end="url(#a-blue)"/>
+<text x="270" y="74" class="s c">logt in en</text><text x="270" y="99" class="s c">geeft toestemming</text>
+<path d="M150 262V164Q150 154 160 154H345" class="ln" stroke="#f08c00" stroke-width="2" marker-end="url(#a-amber)"/>
+<text x="166" y="146" class="s">vraagt toegang: /authorize</text>
+<path d="M350 176H192Q182 176 182 186V257" class="ln" stroke="#1971c2" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#a-blue)"/>
+<text x="196" y="195" class="s cb">access_token</text><text x="196" y="210" class="s cb">met scopes</text>
+<path d="M210 300H345" class="ln" stroke="#f08c00" stroke-width="2" marker-end="url(#a-amber)"/>
+<text x="270" y="292" class="s c">FHIR-verzoek</text><text x="270" y="317" class="s c">met access_token</text>
+<text x="350" y="518" class="s cm">*) Andere implementaties van de backend zijn mogelijk.</text>
+</svg>

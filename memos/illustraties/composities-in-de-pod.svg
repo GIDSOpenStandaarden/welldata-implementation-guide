@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 422" width="840" height="422" role="img" aria-label="De pod bewaart, de API zoekt: de dienst van de kluisaanbieder leest de composities uit de pod, vertaalt ze naar FHIR en beantwoordt de FHIR API uit het geheugen; elke wijziging wordt een nieuwe versie in een eigen bestand, met de hash van de vorige">
+<title>De pod bewaart, de API zoekt: de dienst van de kluisaanbieder leest de composities uit de pod, vertaalt ze naar FHIR en beantwoordt de FHIR API uit het geheugen; elke wijziging wordt een nieuwe versie in een eigen bestand, met de hash van de vorige</title>
+<style>
+svg{font-family:Helvetica,Arial,sans-serif;font-size:13.5px;fill:#212529}
+.t{font-size:15px;font-weight:700}
+.s{font-size:12px;fill:#495057}
+.e{font-size:11px;font-weight:700;letter-spacing:1.3px;fill:#868e96}
+.b{font-weight:700}
+.m{font-family:Menlo,Consolas,'Courier New',monospace;font-size:11.5px}
+.c{text-anchor:middle}
+.r{text-anchor:end}
+.cw{fill:#fff}
+.cb{fill:#1864ab}
+.cg{fill:#2b8a3e}
+.cv{fill:#5f3dc4}
+.ca{fill:#d9480f}
+.cr{fill:#c92a2a}
+.cm{fill:#868e96}
+.ic{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ln{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="a-gray" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.8L9.5 5L0 9.2z" fill="#495057"/></marker>
+<marker id="a-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.8L9.5 5L0 9.2z" fill="#f08c00"/></marker>
+<marker id="a-violet" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0 0.8L9.5 5L0 9.2z" fill="#7048e8"/></marker>
+<symbol id="i-app" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+<symbol id="i-file" viewBox="0 0 16 22"><path d="M0.8 0.8h9.7l4.7 4.7v15.7H0.8z"/><path d="M10.5 0.8v4.7h4.7" fill="none"/></symbol>
+</defs>
+<rect width="840" height="422" rx="12" fill="#fff"/>
+<!-- applicatie -->
+<rect x="16" y="65" width="150" height="76" rx="12" fill="#fff9db" stroke="#f08c00" stroke-width="1.5"/>
+<use href="#i-app" x="26" y="77" width="28" height="28" class="ic" stroke="#d9480f"/>
+<text x="62" y="96" class="t">Applicatie</text>
+<text x="62" y="114" class="s">spreekt alleen</text><text x="62" y="129" class="s">FHIR</text>
+<path d="M166 103H231" class="ln" stroke="#f08c00" stroke-width="2" marker-end="url(#a-amber)"/>
+<text x="201" y="95" class="s c">FHIR</text>
+<!-- dienst -->
+<rect x="236" y="30" width="300" height="316" rx="18" fill="#fff" stroke="#343a40" stroke-width="2.5"/>
+<rect x="258" y="17" width="256" height="26" rx="13" fill="#343a40"/>
+<text x="386" y="34.5" class="s b c cw">Dienst van de kluisaanbieder</text>
+<rect x="252" y="60" width="268" height="86" rx="12" fill="#ebfbee" stroke="#2f9e44" stroke-width="1.5"/>
+<text x="268" y="84" class="t cg">FHIR API</text>
+<text x="268" y="104">zoekt, filtert en valideert</text>
+<text x="268" y="121">in het geheugen</text>
+<path d="M386 146V158" class="ln" stroke="#868e96"/>
+<rect x="252" y="158" width="268" height="86" rx="12" fill="#f3f0ff" stroke="#7048e8" stroke-width="1.5"/>
+<text x="268" y="182" class="t cv">Vertaling</text>
+<text x="268" y="202">FHIR naar openEHR en terug,</text>
+<text x="268" y="219">een mapping per archetype</text>
+<path d="M386 244V256" class="ln" stroke="#868e96"/>
+<rect x="252" y="256" width="268" height="74" rx="12" fill="#f8f9fa" stroke="#868e96" stroke-width="1.5"/>
+<text x="268" y="280" class="t">Lezen en schrijven</text>
+<text x="268" y="300">bestanden in de pod,</text>
+<text x="268" y="317">met controle van de hashes</text>
+<!-- pod -->
+<rect x="606" y="30" width="218" height="316" rx="18" fill="#fff" stroke="#7048e8" stroke-width="2"/>
+<rect x="628" y="17" width="174" height="26" rx="13" fill="#7048e8"/>
+<text x="715" y="34.5" class="s b c cw">Pod van de burger</text>
+<text x="622" y="66" class="e">COMPOSITIES</text>
+<rect x="620" y="76" width="190" height="122" rx="10" fill="#f3f0ff" stroke="#b197fc" stroke-width="1.2"/>
+<text x="632" y="96" class="s b cv">Eén compositie</text>
+<g stroke-width="1.4" stroke-linejoin="round">
+<use href="#i-file" x="640" y="106" width="22" height="30" fill="#fff" stroke="#7048e8"/>
+<use href="#i-file" x="694" y="106" width="22" height="30" fill="#fff" stroke="#7048e8"/>
+<use href="#i-file" x="748" y="106" width="22" height="30" fill="#b2f2bb" stroke="#2f9e44"/>
+</g>
+<path d="M692 121H669" class="ln" stroke="#7048e8" stroke-width="1.5" marker-end="url(#a-violet)"/>
+<path d="M746 121H723" class="ln" stroke="#7048e8" stroke-width="1.5" marker-end="url(#a-violet)"/>
+<text x="651" y="152" class="s c">v1</text><text x="705" y="152" class="s c">v2</text><text x="759" y="152" class="s c">v3</text>
+<text x="632" y="172" class="s">elke versie een bestand,</text>
+<text x="632" y="187" class="s">met de hash van de vorige</text>
+<text x="622" y="222" class="e">DAARNAAST</text>
+<g fill="#fff" stroke="#b197fc" stroke-width="1.2">
+<rect x="620" y="230" width="190" height="22" rx="11"/><rect x="620" y="257" width="190" height="22" rx="11"/><rect x="620" y="284" width="190" height="22" rx="11"/><rect x="620" y="311" width="190" height="22" rx="11"/>
+</g>
+<g class="s c">
+<text x="715" y="245.3">contributions (wie, wanneer)</text><text x="715" y="272.3">persoon en vragenlijsten</text><text x="715" y="299.3">audit trail</text><text x="715" y="326.3">templates</text>
+</g>
+<!-- lezen en schrijven -->
+<path d="M606 283H541" class="ln" stroke="#7048e8" stroke-width="2" marker-end="url(#a-violet)"/>
+<text x="571" y="275" class="s c">lezen</text>
+<path d="M536 313H601" class="ln" stroke="#7048e8" stroke-width="2" marker-end="url(#a-violet)"/>
+<text x="571" y="328" class="s c">schrijven</text>
+<!-- conclusie -->
+<rect x="16" y="362" width="808" height="44" rx="12" fill="#fff4e6" stroke="#ffc078"/>
+<text x="420" y="388.5" class="c">De pod bewaart, de API zoekt. Elke versie is een eigen bestand; de hash-keten laat zien of er iets is gewijzigd.</text>
+</svg>
