@@ -11,6 +11,9 @@ Documenten en kies Bestand > Opslaan als Google Documenten.
 Google Docs kent geen SVG, dus illustraties en diagrammen gaan er als PNG in. Opmaak die
 bij het importeren uit een tabelstijl kan wegvallen (randen, kopregel, lettergrootte en
 kolombreedtes) staat direct op elke tabel.
+
+Elke pagina krijgt een voettekst: links de regel "Licentie" uit de kop van de memo, rechts
+het paginanummer.
 """
 import io
 import json
@@ -22,6 +25,7 @@ import tempfile
 import xml.etree.ElementTree as ET
 import zipfile
 from pathlib import Path
+from xml.sax.saxutils import escape
 
 IG_URL = "https://gidsopenstandaarden.github.io/welldata-implementation-guide/"
 FONT = "Arial"  # de PDF gebruikt Helvetica; Arial is de variant die Google Docs kent
@@ -32,7 +36,10 @@ MARGIN = (1134, 1020)  # boven en onder 20 mm, links en rechts 18 mm, zoals de P
 TEXT_WIDTH = PAGE[0] - 2 * MARGIN[1]
 W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 
-SECTION = (f'<w:sectPr><w:pgSz w:w="{PAGE[0]}" w:h="{PAGE[1]}"/>'
+FOOTER_ID = "rId900"
+FOOTER_TYPE = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer"
+SECTION = (f'<w:sectPr><w:footerReference w:type="default" r:id="{FOOTER_ID}"/>'
+           f'<w:pgSz w:w="{PAGE[0]}" w:h="{PAGE[1]}"/>'
            f'<w:pgMar w:top="{MARGIN[0]}" w:right="{MARGIN[1]}" w:bottom="{MARGIN[0]}" w:left="{MARGIN[1]}"'
            ' w:header="567" w:footer="567" w:gutter="0"/></w:sectPr>')
 DEFAULTS = (f'<w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="{FONT}" w:hAnsi="{FONT}" w:eastAsia="{FONT}" w:cs="{FONT}"/>'
@@ -97,25 +104,56 @@ def restyle(styles):
     return styles
 
 
-def rewrite(src, dst, changes):
-    """Kopieer een docx en pas de genoemde onderdelen aan."""
+def rewrite(src, dst, changes, added=None):
+    """Kopieer een docx, pas de genoemde onderdelen aan en voeg nieuwe onderdelen toe."""
     with zipfile.ZipFile(src) as zin, zipfile.ZipFile(dst, "w", zipfile.ZIP_DEFLATED) as zout:
         for item in zin.infolist():
             data = zin.read(item.filename)
             if item.filename in changes:
                 data = changes[item.filename](data.decode()).encode()
             zout.writestr(item, data)
+        for name, text in (added or {}).items():
+            zout.writestr(name, text.encode())
 
 
-def reference_doc(work):
-    """De standaardsjabloon van pandoc, met de stijlen en het paginaformaat van de PDF."""
+def licentieregel(md):
+    """De regel 'Licentie' uit de kop van de memo als platte tekst; leeg als die ontbreekt."""
+    m = re.search(r"^- \*\*Licentie:\*\*[ \t]*(.+)$", md, flags=re.M)
+    return re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", m.group(1)).strip() if m else ""
+
+
+def footer_part(tekst):
+    """De voettekst: links de licentieregel, rechts het paginanummer (achter een tab naar de rechtermarge)."""
+    props = f'<w:rPr><w:color w:val="666666"/>{size(8)}</w:rPr>'
+
+    def run(t):
+        return f'<w:r>{props}<w:t xml:space="preserve">{escape(t)}</w:t></w:r>'
+
+    def veld(naam):
+        return f'<w:fldSimple w:instr=" {naam} "><w:r>{props}<w:t>1</w:t></w:r></w:fldSimple>'
+
+    return ('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'
+            f'<w:ftr xmlns:w="{W}"><w:p><w:pPr><w:tabs><w:tab w:val="right" w:pos="{TEXT_WIDTH}"/></w:tabs>'
+            f'<w:spacing w:before="0" w:after="0" {SINGLE}/></w:pPr>'
+            + run(tekst) + f'<w:r>{props}<w:tab/></w:r>' + run("Pagina ") + veld("PAGE")
+            + run(" van ") + veld("NUMPAGES") + '</w:p></w:ftr>')
+
+
+def reference_doc(work, voettekst):
+    """De standaardsjabloon van pandoc, met de stijlen, het paginaformaat en de voettekst van de PDF."""
     default, ref = work / "pandoc-reference.docx", work / "reference.docx"
     default.write_bytes(subprocess.run(["pandoc", "--print-default-data-file", "reference.docx"],
                                        check=True, capture_output=True).stdout)
+    relation = f'<Relationship Type="{FOOTER_TYPE}" Id="{FOOTER_ID}" Target="footer1.xml"/>'
+    content_type = ('<Override PartName="/word/footer1.xml" ContentType='
+                    '"application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/>')
+    # Pandoc neemt de voettekst over uit de sjabloon: het onderdeel zelf, de relatie en de verwijzing in de sectie.
     rewrite(default, ref, {
         "word/styles.xml": restyle,
         "word/document.xml": lambda xml: re.sub(r"<w:sectPr>.*?</w:sectPr>", SECTION, xml, flags=re.S),
-    })
+        "word/_rels/document.xml.rels": lambda xml: xml.replace("</Relationships>", relation + "</Relationships>"),
+        "[Content_Types].xml": lambda xml: xml.replace("</Types>", content_type + "</Types>"),
+    }, added={"word/footer1.xml": footer_part(voettekst)})
     return ref
 
 
@@ -214,6 +252,7 @@ def main():
     outdir = memo.parent / "export"
     outdir.mkdir(exist_ok=True)
     md = memo.read_text()
+    voettekst = licentieregel(md)
 
     with tempfile.TemporaryDirectory() as tmp:
         work = Path(tmp)
@@ -253,7 +292,7 @@ def main():
         source.write_text(md)
         # De titel (kop 1) wordt de documenttitel; hoofdstukken worden Kop 1, paragrafen Kop 2.
         subprocess.run(["pandoc", str(source), "-f", "gfm+implicit_figures", "-t", "docx", "--shift-heading-level-by=-1",
-                        "--reference-doc", str(reference_doc(work)), "--resource-path", str(work),
+                        "--reference-doc", str(reference_doc(work, voettekst)), "--resource-path", str(work),
                         "-M", "lang=nl-NL", "-o", str(draft)], check=True)
         docx = outdir / (memo.stem + ".docx")
         rewrite(draft, docx, {"word/document.xml": finish})

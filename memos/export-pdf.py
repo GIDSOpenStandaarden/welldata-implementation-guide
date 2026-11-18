@@ -4,6 +4,10 @@
 Gebruik: python3 memos/export-pdf.py [memos/memo-persoonlijke-gegevenskluis.md]
 Uitvoer: memos/export/<memo>.pdf (plus de gerenderde platen en diagrammen als SVG).
 Vereist: pandoc, mmdc (mermaid-cli) en Google Chrome.
+
+Elke pagina krijgt een voettekst: links de regel "Licentie" uit de kop van de memo, rechts
+het paginanummer. Dat gebruikt de margevakken van CSS, die een recente Chrome vraagt
+(getest met versie 152).
 """
 import base64
 import html
@@ -53,6 +57,20 @@ a { color: #1971c2; text-decoration: none; }
 
 def esc(s):
     return html.escape(s, quote=True)
+
+
+def licentieregel(md):
+    """De regel 'Licentie' uit de kop van de memo als platte tekst; leeg als die ontbreekt."""
+    m = re.search(r"^- \*\*Licentie:\*\*[ \t]*(.+)$", md, flags=re.M)
+    return re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", m.group(1)).strip() if m else ""
+
+
+def voettekst_css(tekst):
+    """Voettekst in de marge van elke pagina: links de licentieregel, rechts het paginanummer."""
+    stijl = "font: 8pt Helvetica, Arial, sans-serif; color: #666;"
+    links = tekst.replace("\\", "\\\\").replace('"', '\\"')
+    return ('@page { @bottom-left { content: "' + links + '"; ' + stijl + ' }'
+            ' @bottom-right { content: "Pagina " counter(page) " van " counter(pages); ' + stijl + ' } }\n')
 
 
 def excalidraw_to_svg(src: Path, dst: Path):
@@ -126,6 +144,7 @@ def main():
     base, outdir = memo.parent, memo.parent / "export"
     outdir.mkdir(exist_ok=True)
     md = memo.read_text()
+    voettekst = licentieregel(md)
 
     def plaat(m):
         label, fname = m.group(1), m.group(2)
@@ -175,7 +194,7 @@ def main():
 
     html_file = outdir / (memo.stem + ".html")
     css_file = outdir / "memo.css"
-    css_file.write_text(CSS)
+    css_file.write_text(CSS + voettekst_css(voettekst))
     tmp_md = outdir / (memo.stem + ".export.md")
     tmp_md.write_text(md)
     subprocess.run(["pandoc", str(tmp_md), "-f", "gfm", "-t", "html5", "--standalone", "--embed-resources",

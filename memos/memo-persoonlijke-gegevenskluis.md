@@ -4,6 +4,7 @@
 - **Status:** eerste opzet, werkdocument
 - **Datum:** 26 oktober 2026, bijgewerkt 17 november 2026
 - **Auteur:** Roland Groen
+- **Licentie:** © 2026 GIDS Open Standaarden, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.nl)
 - **Voorbereiding:** [voorstel-memo-fhir-solid-openehr.md](voorstel-memo-fhir-solid-openehr.md)
 
 > [!NOTE]
