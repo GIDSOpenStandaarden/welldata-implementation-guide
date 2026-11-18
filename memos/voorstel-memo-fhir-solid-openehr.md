@@ -27,7 +27,7 @@ Het vraagstuk loopt al sinds de start van het technisch overleg in WP 3.2 en kom
 | jan 2026 | De werkgroep zoekt een partij die "ten aller tijde consistente FHIR data produceert"; discussie over IG's en CapabilityStatements. |
 | mrt 2026 | Eigen analyse: "Solid is een harde schijf", er ontbreken logische lagen; idee om gegevens als openEHR op te slaan. |
 | apr 2026 | Problemen met de Inrupt Java-client ([issue #36](https://github.com/GIDSOpenStandaarden/welldata-implementation-guide/issues/36)); onderbouwing *FHIR API vs Direct Solid Pod Access*. |
-| jul 2026 | IG-memo *Personal Data Vault (PDK) Architecture* (gestaged); afspraak om een whitepaper over FHIR en Solid te schrijven, met als richting "FHIR IG met datakluis er achter, in de kluis zoiets als openEHR". |
+| jul 2026 | IG-memo *Personal Data Vault (PDK) Architecture* (concept, niet gepubliceerd); afspraak om een whitepaper over FHIR en Solid te schrijven, met als richting "FHIR IG met datakluis er achter, in de kluis zoiets als openEHR". |
 
 De details en letterlijke citaten staan in `documenten/overlegnotities-fhir-solid.md` en `documenten/logboek-wp32-fragmenten-fhir-solid.md`.
 
@@ -90,8 +90,8 @@ flowchart TB
 | Document | Verhouding tot de nieuwe memo |
 | --- | --- |
 | [Shared Dynamic Data](https://gidsopenstandaarden.github.io/welldata-implementation-guide/dynamic-data.html) en [Pod Access](https://gidsopenstandaarden.github.io/welldata-implementation-guide/pod-access.html) (IG) | Beschrijven de huidige situatie: FHIR-resources als losse `.ttl`-bestanden in een container per type, toegang per container via Access Grants. Uitgangspunt van deel A. |
-| [Personal Data Vault (PDK) Architecture](https://gidsopenstandaarden.github.io/welldata-implementation-guide/memo-personal-data-vault.html) (IG, gestaged) | Beschrijft de kluis (PDK) als architectuurrol achter een FHIR-contract en noemt het opslagsubstraat een implementatiedetail. Sluit direct aan op deel B: de nieuwe memo maakt daar een vast te stellen API van, met als thema de persoonlijke gegevenskluis. |
-| [FHIR API vs Direct Solid Access](https://gidsopenstandaarden.github.io/welldata-implementation-guide/memo-fhir-api-vs-direct-solid-access.html) (IG, gestaged) | Onderbouwing waarom een FHIR API beter werkt dan directe toegang tot de pod. Levert argumenten voor deel A. |
+| *Personal Data Vault (PDK) Architecture* (concept voor de IG, niet gepubliceerd) | Beschrijft de kluis (PDK) als architectuurrol achter een FHIR-contract en noemt het opslagsubstraat een implementatiedetail. Sluit direct aan op deel B: de nieuwe memo maakt daar een vast te stellen API van, met als thema de persoonlijke gegevenskluis. |
+| [FHIR API vs Direct Solid Access](https://github.com/GIDSOpenStandaarden/welldata-ephemeral-fhir-service/blob/main/docs/fhir-api-vs-direct-solid-access.md) (bij de ephemeral FHIR service) | Onderbouwing waarom een FHIR API beter werkt dan directe toegang tot de pod. Levert argumenten voor deel A. |
 | *Technical Memo: Welldata Architecture* (maart 2025) | Gaat over aggregatie en onderzoeksdata (Solid voor sessies, Nuts voor push). Complementair: de nieuwe memo gaat over de toegang tot en de opslag van persoonlijke gegevens. |
 
 **Voorstel:** de nieuwe memo als vervolg op de PDK-memo schrijven, en voor het "waarom een FHIR API" verwijzen in plaats van herhalen.
@@ -208,7 +208,7 @@ Eigenschappen van openEHR om in de specificaties en implementaties te toetsen:
 ### 6.2 In deze repository
 
 - Huidige situatie: [Shared Dynamic Data](https://gidsopenstandaarden.github.io/welldata-implementation-guide/dynamic-data.html) (opslagstructuur in de pod), [Pod Access](https://gidsopenstandaarden.github.io/welldata-implementation-guide/pod-access.html) en [Accessing the Pod](https://gidsopenstandaarden.github.io/welldata-implementation-guide/technical-pod-access.html) (toegang)
-- Memo's: [Personal Data Vault (PDK) Architecture](https://gidsopenstandaarden.github.io/welldata-implementation-guide/memo-personal-data-vault.html), [FHIR API vs Direct Solid Access](https://gidsopenstandaarden.github.io/welldata-implementation-guide/memo-fhir-api-vs-direct-solid-access.html)
+- Eerdere memo's: *Personal Data Vault (PDK) Architecture* (concept, niet gepubliceerd) en [FHIR API vs Direct Solid Access](https://github.com/GIDSOpenStandaarden/welldata-ephemeral-fhir-service/blob/main/docs/fhir-api-vs-direct-solid-access.md) (bij de ephemeral FHIR service)
 - Profielen in [de IG (Artifacts)](https://gidsopenstandaarden.github.io/welldata-implementation-guide/artifacts.html) en de RDF-voorbeelden op de branch `feature/finalize-fhir-rdf`
 
 ### 6.3 Externe bronnen (eerste selectie, nog te lezen)
