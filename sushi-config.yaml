@@ -116,6 +116,9 @@ pages:
     title: Ephemeral FHIR Service
   hackathon-hti-launch.md:
     title: HTI Launch
+  # Generated from memos/ by memos/export-ig.py (make memo-page), not in git
+  memo-persoonlijke-gegevenskluis.md:
+    title: Van harde schijf naar persoonlijke gegevenskluis
 
 #
 #
@@ -174,3 +177,5 @@ menu:
     Ephemeral FHIR Service: technical-ephemeral-fhir-service.html
   Hackathon:
     HTI Launch: hackathon-hti-launch.html
+  Memo's and Reviews:
+    Van harde schijf naar persoonlijke gegevenskluis: memo-persoonlijke-gegevenskluis.html

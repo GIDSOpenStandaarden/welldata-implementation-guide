@@ -18,6 +18,7 @@ docker build . -t gidsopenstandaarden-welldata-ig
 |--------|-------------|
 | `build` | Run the complete FHIR build process (full documentation package) |
 | `sushi` | Run SUSHI only (quick FSH validation) |
+| `memo-page` | Generate the IG page of the memo from `memos/` (runs before `build` and `sushi`) |
 | `version` | Show the current version from sushi-config.yaml |
 | `clean` | Clean build artifacts |
 | `help` | Show help message |

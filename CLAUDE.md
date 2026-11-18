@@ -87,6 +87,10 @@ Title: "New Observation Example"
 2. Add to `pages:` section in `sushi-config.yaml`
 3. Add to `menu:` section in `sushi-config.yaml`
 
+## Memo Page
+
+The page "Van harde schijf naar persoonlijke gegevenskluis" (menu "Memo's and Reviews") is generated. The source is `memos/memo-persoonlijke-gegevenskluis.md`; `memos/export-ig.py` turns it into `input/pagecontent/memo-persoonlijke-gegevenskluis.md` plus its images and PlantUML diagram. The Makefile runs it before `build` and `sushi` (target `memo-page`), and the output is in `.gitignore`. Edit the memo, never the generated page.
+
 ## PlantUML Diagrams
 
 Place `.plantuml` files in `input/images-source/`. Reference in markdown:

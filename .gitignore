@@ -14,6 +14,11 @@ documenten/
 # Gegenereerde PDF-export van de memo
 memos/export/
 
+# IG page of the memo, generated from memos/ by memos/export-ig.py (make memo-page)
+input/pagecontent/memo-persoonlijke-gegevenskluis.md
+input/images/memo-persoonlijke-gegevenskluis-*
+input/images-source/memo-persoonlijke-gegevenskluis-*
+
 # macOS and Python artifacts
 .DS_Store
 __pycache__/

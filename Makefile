@@ -14,15 +14,21 @@ all: build
 .PHONY: build
 build: build-ig
 
+# Generate the IG page of the memo; memos/ is the source, the page is not in git
+.PHONY: memo-page
+memo-page:
+	@echo "Generating the memo page from memos/..."
+	@python3 memos/export-ig.py
+
 # Sushi only (for quick FSH validation)
 .PHONY: sushi
-sushi:
+sushi: memo-page
 	@echo "Running SUSHI..."
 	@sushi .
 
 # Build Implementation Guide (Full with documentation)
 .PHONY: build-ig
-build-ig:
+build-ig: memo-page
 	@echo "Building Full Implementation Guide with version $(VERSION)..."
 	java -jar /usr/local/publisher.jar -ig ig.ini
 	@if [ ! -f ./output/package.tgz ]; then \
@@ -43,6 +49,9 @@ version:
 clean:
 	@echo "Cleaning build artifacts..."
 	@rm -rf output fsh-generated temp
+	@rm -f input/pagecontent/memo-persoonlijke-gegevenskluis.md \
+		input/images/memo-persoonlijke-gegevenskluis-* \
+		input/images-source/memo-persoonlijke-gegevenskluis-*
 
 # Help target
 .PHONY: help
@@ -50,6 +59,7 @@ help:
 	@echo "Available targets:"
 	@echo "  build    - Run the complete FHIR build process (full documentation package)"
 	@echo "  sushi    - Run SUSHI only (quick FSH validation)"
+	@echo "  memo-page - Generate the IG page of the memo from memos/ (runs before build and sushi)"
 	@echo "  version  - Show the current version from sushi-config.yaml"
 	@echo "  clean    - Clean build artifacts"
 	@echo "  help     - Show this help message"
