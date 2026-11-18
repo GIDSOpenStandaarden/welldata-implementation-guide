@@ -13,3 +13,13 @@ documenten/
 
 # Gegenereerde PDF-export van de memo
 memos/export/
+
+# macOS and Python artifacts
+.DS_Store
+__pycache__/
+
+# Nimbalyst session screenshots
+.nimbalyst/transcript-images/
+
+# Local RDF test data, not part of the IG
+testdata/
